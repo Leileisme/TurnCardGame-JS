@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>愛麗絲夢遊仙境</title>
+  <style>
+    .poker_content {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 350px;
+      background-color: #333;
+    }
+
+    .card_front {
+      width: 150px;
+      height: 200px;
+      border: 1px solid #333;
+      background-image: url(./cards/1H.jpg);
+      background-size: 93%;
+      background-repeat: no-repeat;
+      background-position: center;
+      /* 以下這個的作用?? */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .head_heart {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .head_heart::before {
+      content: '';
+      width: 36px;
+      height: 60px;
+      border-radius: 50px 50px 0 0;
+      background-color: rgb(224, 23, 23);
+      position: absolute;
+      left: 17px;
+      transform: rotate(45deg);
+    }
+
+    .head_heart::after {
+      content: '';
+      width: 36px;
+      height: 60px;
+      border-radius: 50px 50px 0 0;
+      background-color: rgb(224, 23, 23);
+      position: absolute;
+      transform: rotate(-45deg);
+    }
+
+
+    .face {
+      content: '';
+      width: 48px;
+      height: 60px;
+      /* background-color: rgb(254, 230, 178); */
+      border-radius: 50% 50% 43% 43%;
+      position: absolute;
+      left: 50%;
+      top: 18%;
+      transform: translate(-50%, 0);
+    }
+
+    /* 嘴 */
+    .mouth_heart {
+      position: absolute;
+      top: 52px;
+      left: 33px;
+    }
+
+    .mouth_heart::before {
+      content: '';
+      width: 6px;
+      height: 10px;
+      border-radius: 50px 50px 0 0;
+      background-color: rgb(0, 0, 0);
+      position: absolute;
+      right: -4px;
+      /* top: 20px;
+      left: 20px; */
+      transform: rotate(45deg);
+      transform-origin: left bottom;
+    }
+
+    .mouth_heart::after {
+      content: '';
+      width: 6px;
+      height: 10px;
+      border-radius: 50px 50px 0 0;
+      background-color: rgb(0, 0, 0);
+      position: absolute;
+      transform: rotate(-45deg);
+      transform-origin: right bottom;
+    }
+
+    .heart {
+      position: absolute;
+      left: 45%;
+      top: 20px;
+      /* top: 20px; */
+      /* transform: translateX(-50%); */
+
+    }
+
+    .heart::before {
+      content: '';
+      width: 12px;
+      height: 20px;
+      border-radius: 50px 50px 0 0;
+      background-color: rgb(224, 23, 23);
+      position: absolute;
+      right: -7px;
+      /* top: 20px;
+      left: 20px; */
+      transform: rotate(45deg);
+      transform-origin: left bottom;
+
+
+    }
+
+    .heart::after {
+      content: '';
+      width: 12px;
+      height: 20px;
+      border-radius: 50px 50px 0 0;
+      background-color: rgb(224, 23, 23);
+      position: absolute;
+      transform: rotate(-45deg);
+      transform-origin: right bottom;
+    }
+
+    /* 笑臉嘴 */
+    /* .A{
+      content: '';
+      position: absolute;
+      left: 14px;
+      top: 25px;
+      width: 20px;
+      height: 20px;
+      border-top: 5px solid #000;
+      border-radius: 120px 120px 0 0;
+      transform: rotate(180deg);
+    } */
+  </style>
+</head>
+
+<body>
+  <div class="poker_content">
+    <div class="head_heart">
+      <div class="face"></div>
+      <div class="mouth_heart"></div>
+      <div class="heart"></div>
+    </div>
+
+    <div class="card_front"></div>
+    <div class="card_back"></div>
+
+  </div>
+</body>
+
+</html>
