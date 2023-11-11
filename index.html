@@ -18,7 +18,7 @@
 
   <!-- 紅桃 -->
 
-  <div class="poker_content_heart order ">
+  <div class="poker_content_heart order  ">
 
     <div class="arm_heart_R"></div>
     <div class="arm2_heart_R"></div>
@@ -52,6 +52,7 @@
     <div class="foot_heart_L"></div>
 
   </div>
+
 
   <!-- 黑桃 -->
 
@@ -232,6 +233,22 @@
       }
     })
 
+
+    // 無效 why?
+
+    const walk_poker = () => {
+      $('.poker_content_heart').css('transform', 'rotate(10deg)')
+
+      if ($('.poker_content_heart').css('transform').includes('rotate(10deg)')) {
+        $('.poker_content_heart').css('transform', 'rotate(-10deg)')
+        $('.leg_heart_R ').toggleClass('leg02_heart_R')
+        $('.foot_heart_R ').toggleClass('foot02_heart_R')
+        $('.leg_heart_L ').toggleClass('leg02_heart_L')
+        $('.foot_heart_L ').toggleClass('foot02_heart_L')
+      }
+    }
+
+    setInterval(walk_poker, 300)
 
 
   </script>

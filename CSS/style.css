@@ -17,13 +17,15 @@ body {
 
 /* 紅桃 */
 .poker_content_heart {
+  /* 待刪 */
+  transform: rotate(10deg);
+
   position: relative;
   width: 300px;
   height: 350px;
   float: left;
   margin-right: -80px;
   /* border: 1px solid red; */
-
 }
 
 .card {
@@ -268,6 +270,107 @@ body {
   z-index: 1;
 }
 
+/* ------------------ 走動 -10deg ------------ */
+/* ----------------------------- */
+.leg02_heart_R {
+  transform: rotate(20deg);
+  width: 5px;
+  height: 25px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 256px;
+  left: 100px;
+  z-index: 1;
+}
+
+.foot02_heart_R {
+  transform: rotate(20deg);
+  height: 18px;
+  width: 25px;
+  background-color: rgb(224, 23, 23);
+  position: absolute;
+  top: 279px;
+  left: 83px;
+  /* transform: rotate(30deg); */
+  border-radius: 50px 50px 0 0;
+  z-index: 2;
+}
+
+.leg02_heart_L {
+  transform: rotate(-10deg);
+  width: 5px;
+  height: 35px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 256px;
+  left: 195px;
+  z-index: 1;
+}
+
+.foot02_heart_L {
+  transform: rotate(-10deg);
+  height: 18px;
+  width: 25px;
+  background-color: rgb(224, 23, 23);
+  position: absolute;
+  top: 287px;
+  left: 190px;
+  /* transform: rotate(30deg); */
+  border-radius: 50px 50px 0 0;
+  z-index: 2;
+}
+/* ------------------ 走動 10deg ------------ */
+/* ----------------------------- */
+.leg03_heart_R {
+  transform: rotate(10deg);
+  width: 5px;
+  height: 35px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 256px;
+  left: 100px;
+  z-index: 1;
+}
+
+.foot03_heart_R {
+  transform: rotate(10deg);
+  height: 18px;
+  width: 25px;
+  background-color: rgb(224, 23, 23);
+  position: absolute;
+  top: 287px;
+  left: 85px;
+  /* transform: rotate(30deg); */
+  border-radius: 50px 50px 0 0;
+  z-index: 2;
+}
+
+.leg03_heart_L {
+  transform: rotate(-20deg);
+  width: 5px;
+  height: 25px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 256px;
+  left: 195px;
+  z-index: 1;
+}
+
+.foot03_heart_L {
+  transform: rotate(-20deg);
+  height: 18px;
+  width: 25px;
+  background-color: rgb(224, 23, 23);
+  position: absolute;
+  top: 280px;
+  left: 194px;
+  /* transform: rotate(30deg); */
+  border-radius: 50px 50px 0 0;
+  z-index: 2;
+}
+/* ------------------走動------------ */
+/* ----------------------------- */
+
 .leg_heart_R {
   width: 5px;
   height: 30px;
@@ -277,7 +380,6 @@ body {
   left: 100px;
   z-index: 1;
 }
-
 .foot_heart_R {
   height: 18px;
   width: 25px;

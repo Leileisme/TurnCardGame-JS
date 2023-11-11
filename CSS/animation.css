@@ -1,7 +1,11 @@
 @keyframes walk {
   0% {
+    transform: rotate(0deg);
+  }
+  40% {
     transform: rotate(-10deg);
   }
+
   100% {
     transform: rotate(10deg);
   }
@@ -9,5 +13,8 @@
 
 .walk {
   animation-name: walk;
+  animation-duration: 1.5s;
   animation-iteration-count: infinite;
+  /* animation-timing-function: linear; */
+  animation-fill-mode: both;
 }
