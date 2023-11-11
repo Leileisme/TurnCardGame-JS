@@ -1,0 +1,13 @@
+@keyframes walk {
+  0% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+.walk {
+  animation-name: walk;
+  animation-iteration-count: infinite;
+}

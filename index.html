@@ -5,167 +5,236 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>愛麗絲夢遊仙境</title>
+  <link rel="stylesheet" href="./CSS/style.css">
+  <link rel="stylesheet" href="./CSS/animation.css">
+
   <style>
-    .poker_content {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 300px;
-      height: 350px;
-      background-color: #333;
-    }
 
-    .card_front {
-      width: 150px;
-      height: 200px;
-      border: 1px solid #333;
-      background-image: url(./cards/1H.jpg);
-      background-size: 93%;
-      background-repeat: no-repeat;
-      background-position: center;
-      /* 以下這個的作用?? */
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .head_heart {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .head_heart::before {
-      content: '';
-      width: 36px;
-      height: 60px;
-      border-radius: 50px 50px 0 0;
-      background-color: rgb(224, 23, 23);
-      position: absolute;
-      left: 17px;
-      transform: rotate(45deg);
-    }
-
-    .head_heart::after {
-      content: '';
-      width: 36px;
-      height: 60px;
-      border-radius: 50px 50px 0 0;
-      background-color: rgb(224, 23, 23);
-      position: absolute;
-      transform: rotate(-45deg);
-    }
-
-
-    .face {
-      content: '';
-      width: 48px;
-      height: 60px;
-      /* background-color: rgb(254, 230, 178); */
-      border-radius: 50% 50% 43% 43%;
-      position: absolute;
-      left: 50%;
-      top: 18%;
-      transform: translate(-50%, 0);
-    }
-
-    /* 嘴 */
-    .mouth_heart {
-      position: absolute;
-      top: 52px;
-      left: 33px;
-    }
-
-    .mouth_heart::before {
-      content: '';
-      width: 6px;
-      height: 10px;
-      border-radius: 50px 50px 0 0;
-      background-color: rgb(0, 0, 0);
-      position: absolute;
-      right: -4px;
-      /* top: 20px;
-      left: 20px; */
-      transform: rotate(45deg);
-      transform-origin: left bottom;
-    }
-
-    .mouth_heart::after {
-      content: '';
-      width: 6px;
-      height: 10px;
-      border-radius: 50px 50px 0 0;
-      background-color: rgb(0, 0, 0);
-      position: absolute;
-      transform: rotate(-45deg);
-      transform-origin: right bottom;
-    }
-
-    .heart {
-      position: absolute;
-      left: 45%;
-      top: 20px;
-      /* top: 20px; */
-      /* transform: translateX(-50%); */
-
-    }
-
-    .heart::before {
-      content: '';
-      width: 12px;
-      height: 20px;
-      border-radius: 50px 50px 0 0;
-      background-color: rgb(224, 23, 23);
-      position: absolute;
-      right: -7px;
-      /* top: 20px;
-      left: 20px; */
-      transform: rotate(45deg);
-      transform-origin: left bottom;
-
-
-    }
-
-    .heart::after {
-      content: '';
-      width: 12px;
-      height: 20px;
-      border-radius: 50px 50px 0 0;
-      background-color: rgb(224, 23, 23);
-      position: absolute;
-      transform: rotate(-45deg);
-      transform-origin: right bottom;
-    }
-
-    /* 笑臉嘴 */
-    /* .A{
-      content: '';
-      position: absolute;
-      left: 14px;
-      top: 25px;
-      width: 20px;
-      height: 20px;
-      border-top: 5px solid #000;
-      border-radius: 120px 120px 0 0;
-      transform: rotate(180deg);
-    } */
   </style>
 </head>
 
 <body>
-  <div class="poker_content">
-    <div class="head_heart">
-      <div class="face"></div>
-      <div class="mouth_heart"></div>
-      <div class="heart"></div>
+  <div id="game"></div>
+
+  <!-- 紅桃 -->
+
+  <div class="poker_content_heart order ">
+
+    <div class="arm_heart_R"></div>
+    <div class="arm2_heart_R"></div>
+
+    <div class="arm_heart_L"></div>
+    <div class="arm2_heart_L"></div>
+
+
+    <div class="hand_heart_R"> </div>
+    <div class="hand_heart_L"></div>
+
+
+    <div class="card card_close">
+      <div class="card_front_heart"></div>
+      <div class="card_back_heart"></div>
     </div>
 
-    <div class="card_front"></div>
-    <div class="card_back"></div>
+    <div class="head_heart">
+      <div class="face_heart"></div>
+      <div class="nose_heart"></div>
+      <div class="mouth_heart"></div>
+    </div>
+
+    <div class="shoulder_heart"></div>
+    <div class="shoulder02_heart"></div>
+
+    <div class="leg_heart_R"></div>
+    <div class="foot_heart_R"></div>
+
+    <div class="leg_heart_L"></div>
+    <div class="foot_heart_L"></div>
 
   </div>
+
+  <!-- 黑桃 -->
+
+  <!-- <div class="poker_content_spades order">
+    <div class="arm_spades_R"></div>
+    <div class="arm2_spades_R"></div>
+
+    <div class="arm_spades_L"></div>
+    <div class="arm2_spades_L"></div>
+
+    <div class="hand_spades_R"> </div>
+    <div class="hand_spades_L"></div>
+
+    <div class="card card_close">
+      <div class="card_front_spades"></div>
+      <div class="card_back_spades"></div>
+    </div>
+
+    <div class="head_spades">
+      <div class="face_spades"></div>
+      <div class="nose_spades"></div>
+      <div class="mouth_spades"></div>
+    </div>
+
+    <div class="shoulder_spades"></div>
+    <div class="shoulder02_spades"></div>
+
+    <div class="leg_spades_R"></div>
+    <div class="foot_spades_R"></div>
+
+    <div class="leg_spades_L"></div>
+    <div class="foot_spades_L"></div>
+  </div>
+
+
+  </div> -->
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'
+    integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=='
+    crossorigin='anonymous'></script>
+
+  <script>
+
+    //     for (let i = 0; i < 8; i++) {
+    //       $('#game').append(
+    //         `
+    //         <div class="poker_content_heart order">
+
+    // <div class="arm_heart_R"></div>
+    // <div class="arm2_heart_R"></div>
+
+    // <div class="arm_heart_L"></div>
+    // <div class="arm2_heart_L"></div>
+
+
+    // <div class="hand_heart_R"> </div>
+    // <div class="hand_heart_L"></div>
+
+
+    // <div class="card card_close card_heart">
+    //   <div class="card_front_heart"></div>
+    //   <div class="card_back_heart"></div>
+    // </div>
+
+    // <div class="head_heart">
+    //   <div class="face_heart"></div>
+    //   <div class="nose_heart"></div>
+    //   <div class="mouth_heart"></div>
+    // </div>
+
+    // <div class="shoulder_heart"></div>
+    // <div class="shoulder02_heart"></div>
+
+    // <div class="leg_heart_R"></div>
+    // <div class="foot_heart_R"></div>
+
+    // <div class="leg_heart_L"></div>
+    // <div class="foot_heart_L"></div>
+
+    // </div>
+
+    //                 ` )
+
+    //       $('#game').append(
+    //         ` <div class="poker_content_spades order">
+    //     <div class="arm_spades_R"></div>
+    //     <div class="arm2_spades_R"></div>
+
+    //     <div class="arm_spades_L"></div>
+    //     <div class="arm2_spades_L"></div>
+
+    //     <div class="hand_spades_R"> </div>
+    //     <div class="hand_spades_L"></div>
+
+    //     <div class="card card_close card_spades">
+    //       <div class="card_front_spades"></div>
+    //       <div class="card_back_spades"></div>
+    //     </div>
+
+    //     <div class="head_spades">
+    //       <div class="face_spades"></div>
+    //       <div class="nose_spades"></div>
+    //       <div class="mouth_spades"></div>
+    //     </div>
+
+    //     <div class="shoulder_spades"></div>
+    //     <div class="shoulder02_spades"></div>
+
+    //     <div class="leg_spades_R"></div>
+    //     <div class="foot_spades_R"></div>
+
+    //     <div class="leg_spades_L"></div>
+    //     <div class="foot_spades_L"></div>
+    //   </div>
+    //   </div>`
+    //       )
+
+    //     }
+
+    //     $('.card_heart').each(function (index) {
+    //       const number = index % 8 + 1
+    //       console.log(index, number)
+    //       $(this).find('.card_front_heart').css('background-image', `url(./cards/${number}H.jpg)`)
+    //       $(this).parents('.order').attr('data_number', number)
+    //     })
+
+
+    //     $('.card_spades').each(function (index) {
+    //       const number = index % 8 + 1
+    //       console.log(index, number)
+    //       $(this).find('.card_front_spades').css('background-image', `url(./cards/${number}S.jpg)`)
+    //       $(this).parents('.order').attr('data_number', number)
+    //     })
+
+
+
+    // 打亂
+    for (let i = 0; i < 20; i++) {
+      const randomA = Math.round(Math.random() * 15)
+      const randomB = Math.round(Math.random() * 15)
+      $('.order').eq(randomA).insertAfter($('.order').eq(randomB))
+    }
+
+
+    // 翻牌
+    $('#game').on('click', '.order', function () {
+      if (
+        $('.order').find('.card:not(.card_close)').length < 2 &&
+        $(this).find('.card').hasClass('card_close') &&
+        !$(this).find('.card').hasClass('card_ok')
+      ) {
+        $(this).find('.card').removeClass('card_close')
+      }
+
+      if ($('.order').find('.card:not(.card_close)').length === 2) {
+        if (
+          $('.order').find('.card:not(.card_close)').parents('.order').eq(0).attr('data_number') ===
+          $('.order').find('.card:not(.card_close)').parents('.order').eq(1).attr('data_number')
+        ) {
+          $('.order').find('.card:not(.card_close)').addClass('card_ok')
+          $('.order').find('.card:not(.card_close)').parents('.order').fadeTo(1000, 0)
+
+          // 為什麼這邊改成 2 秒，就不會 css('display', 'none') ?
+          setTimeout(function () {
+            $('.order').find('.card:not(.card_close)').parents('.order').css('display', 'none')
+          }, 1000)
+        }
+
+
+
+        setTimeout(function () {
+          // 翻回來
+          $('.order').find('.card:not(.card_close)').addClass('card_close')
+          //  過關
+          if ($('.order').find('.card_ok').length === $('.order').length)
+            alert('找到愛麗絲')
+        }, 1000)
+      }
+    })
+
+
+
+  </script>
 </body>
 
 </html>
