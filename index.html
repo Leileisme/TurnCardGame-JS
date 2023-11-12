@@ -5,20 +5,62 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>愛麗絲夢遊仙境</title>
+
   <link rel="stylesheet" href="./CSS/style.css">
   <link rel="stylesheet" href="./CSS/animation.css">
 
-  <style>
 
+  <style>
+    @font-face {
+      font-family: '俐方體11號';
+      src: url(./font/Cubic_11_1.010_R.ttf);
+    }
   </style>
 </head>
 
 <body>
+  <div id="Alice">
+    <img src="./images/愛麗絲4.png">
+  </div>
+
   <div id="game"></div>
+
+  <div id="start_btnAll">
+    <!-- <div id="text">解救愛麗絲</div> -->
+    <!-- 按開始後變的字 -->
+    <div id="click">救援倒數:<span id="time">??</span>秒</div>
+    <input type="button" id="start_btn" value="START">
+  </div>
+
+  <div id="title">
+    <span id="title1">解救</span><br>
+    <span id="title2">愛麗絲</span>
+  </div>
+
+  <div id="backTime">
+    <span id="helpText">救援<br>倒數</span><br>
+    <span id="timeNumber">30</span>
+    <span id="sec">/秒</span>
+  </div>
+
+  <!-- 遊戲說明也許可以用跳的 -->
+  <div id="rule">
+    愛麗絲被撲克牌士兵團團包住了！<br>
+    馬上就要錯過回家的時間了~<br>
+    快點在時間內解救愛絲，讓她安心回家吧！
+    <br>
+    <br>
+    <h3>解救任務：</h3>
+    1.在 ? 秒內將相同數字的「撲克牌士兵」配對<br>
+    2.小心！他們會隨機換位置！還會走動！
+  </div>
+
+
+
 
   <!-- 紅桃 -->
 
-  <div class="poker_content_heart order  ">
+  <!-- <div class="poker_content_heart order  rotate_-10">
 
     <div class="arm_heart_R"></div>
     <div class="arm2_heart_R"></div>
@@ -31,7 +73,7 @@
     <div class="hand_heart_L"></div>
 
 
-    <div class="card card_close">
+    <div class="card card_close card_heart">
       <div class="card_front_heart"></div>
       <div class="card_back_heart"></div>
     </div>
@@ -45,18 +87,18 @@
     <div class="shoulder_heart"></div>
     <div class="shoulder02_heart"></div>
 
-    <div class="leg_heart_R"></div>
-    <div class="foot_heart_R"></div>
+    <div class="leg_R_-10deg"></div>
+    <div class="foot_heart_R_-10deg"></div>
 
-    <div class="leg_heart_L"></div>
-    <div class="foot_heart_L"></div>
+    <div class="leg_L_-10deg"></div>
+    <div class="foot_heart_L_-10deg"></div>
 
-  </div>
+  </div> -->
 
 
   <!-- 黑桃 -->
 
-  <!-- <div class="poker_content_spades order">
+  <!-- <div class="poker_content_spades order rotate_-10">
     <div class="arm_spades_R"></div>
     <div class="arm2_spades_R"></div>
 
@@ -66,7 +108,7 @@
     <div class="hand_spades_R"> </div>
     <div class="hand_spades_L"></div>
 
-    <div class="card card_close">
+    <div class="card card_close card_spades">
       <div class="card_front_spades"></div>
       <div class="card_back_spades"></div>
     </div>
@@ -80,15 +122,15 @@
     <div class="shoulder_spades"></div>
     <div class="shoulder02_spades"></div>
 
-    <div class="leg_spades_R"></div>
+    <div class="leg_R"></div>
     <div class="foot_spades_R"></div>
 
-    <div class="leg_spades_L"></div>
+    <div class="leg_L"></div>
     <div class="foot_spades_L"></div>
-  </div>
-
-
   </div> -->
+
+
+  </div>
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'
     integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=='
@@ -172,83 +214,245 @@
 
     //     }
 
-    //     $('.card_heart').each(function (index) {
-    //       const number = index % 8 + 1
-    //       console.log(index, number)
-    //       $(this).find('.card_front_heart').css('background-image', `url(./cards/${number}H.jpg)`)
-    //       $(this).parents('.order').attr('data_number', number)
-    //     })
-
-
-    //     $('.card_spades').each(function (index) {
-    //       const number = index % 8 + 1
-    //       console.log(index, number)
-    //       $(this).find('.card_front_spades').css('background-image', `url(./cards/${number}S.jpg)`)
-    //       $(this).parents('.order').attr('data_number', number)
-    //     })
 
 
 
-    // 打亂
-    for (let i = 0; i < 20; i++) {
-      const randomA = Math.round(Math.random() * 15)
-      const randomB = Math.round(Math.random() * 15)
-      $('.order').eq(randomA).insertAfter($('.order').eq(randomB))
+
+    for (let i = 0; i < 8; i++) {
+      $('#game').append(`
+      <div class="poker_content_heart order   loopMove ">
+
+      <div class="arm_heart_R"></div>
+      <div class="arm2_heart_R"></div>
+
+      <div class="arm_heart_L"></div>
+      <div class="arm2_heart_L"></div>
+
+
+      <div class="hand_heart_R"> </div>
+      <div class="hand_heart_L"></div>
+
+      <div class="card card_heart">
+        <div class="card_front_heart"></div>
+        <div class="card_back_heart"></div>
+      </div>
+
+      <div class="head_heart">
+        <div class="face_heart"></div>
+        <div class="nose_heart"></div>
+        <div class="mouth_heart"></div>
+      </div>
+
+      <div class="shoulder_heart"></div>
+      <div class="shoulder02_heart"></div>
+
+      <div class="leg_R"></div>
+      <div class="foot_heart_R"></div>
+
+      <div class="leg_L"></div>
+      <div class="foot_heart_L"></div>
+
+      </div>`)
+
+      $('#game').append(`
+
+      <div class="poker_content_spades order  loopMove ">
+    <div class="arm_spades_R"></div>
+    <div class="arm2_spades_R"></div>
+
+    <div class="arm_spades_L"></div>
+    <div class="arm2_spades_L"></div>
+
+    <div class="hand_spades_R"> </div>
+    <div class="hand_spades_L"></div>
+
+    <div class="card card_spades">
+      <div class="card_front_spades"></div>
+      <div class="card_back_spades"></div>
+    </div>
+
+    <div class="head_spades">
+      <div class="face_spades"></div>
+      <div class="nose_spades"></div>
+      <div class="mouth_spades"></div>
+    </div>
+
+    <div class="shoulder_spades"></div>
+    <div class="shoulder02_spades"></div>
+
+    <div class="leg_R"></div>
+    <div class="foot_spades_R"></div>
+
+    <div class="leg_L"></div>
+    <div class="foot_spades_L"></div>
+  </div>`)
     }
 
-
-    // 翻牌
-    $('#game').on('click', '.order', function () {
-      if (
-        $('.order').find('.card:not(.card_close)').length < 2 &&
-        $(this).find('.card').hasClass('card_close') &&
-        !$(this).find('.card').hasClass('card_ok')
-      ) {
-        $(this).find('.card').removeClass('card_close')
-      }
-
-      if ($('.order').find('.card:not(.card_close)').length === 2) {
-        if (
-          $('.order').find('.card:not(.card_close)').parents('.order').eq(0).attr('data_number') ===
-          $('.order').find('.card:not(.card_close)').parents('.order').eq(1).attr('data_number')
-        ) {
-          $('.order').find('.card:not(.card_close)').addClass('card_ok')
-          $('.order').find('.card:not(.card_close)').parents('.order').fadeTo(1000, 0)
-
-          // 為什麼這邊改成 2 秒，就不會 css('display', 'none') ?
-          setTimeout(function () {
-            $('.order').find('.card:not(.card_close)').parents('.order').css('display', 'none')
-          }, 1000)
-        }
-
-
-
-        setTimeout(function () {
-          // 翻回來
-          $('.order').find('.card:not(.card_close)').addClass('card_close')
-          //  過關
-          if ($('.order').find('.card_ok').length === $('.order').length)
-            alert('找到愛麗絲')
-        }, 1000)
-      }
+    //  把數字給撲克牌 ： setting 基本場面
+    $('.card_heart').each(function (index) {
+      const number = index % 8 + 1
+      console.log(index, number)
+      $(this).find('.card_front_heart').css('background-image', `url(./cards/${number}H.jpg)`)
+      $(this).parents('.order').attr('data_number', number)
     })
 
 
-    // 無效 why?
+    $('.card_spades').each(function (index) {
+      const number = index % 8 + 1
+      console.log(index, number)
+      $(this).find('.card_front_spades').css('background-image', `url(./cards/${number}S.jpg)`)
+      $(this).parents('.order').attr('data_number', number)
+    })
 
-    const walk_poker = () => {
-      $('.poker_content_heart').css('transform', 'rotate(10deg)')
+    // 點擊開始遊戲
 
-      if ($('.poker_content_heart').css('transform').includes('rotate(10deg)')) {
-        $('.poker_content_heart').css('transform', 'rotate(-10deg)')
-        $('.leg_heart_R ').toggleClass('leg02_heart_R')
-        $('.foot_heart_R ').toggleClass('foot02_heart_R')
-        $('.leg_heart_L ').toggleClass('leg02_heart_L')
-        $('.foot_heart_L ').toggleClass('foot02_heart_L')
+    $('#start_btn').click(function () {
+      $(this).attr('disabled', true)
+      let time = 15
+      $('#timeNumber').text(time)
+      $('#timeNumber').css('display', 'block')
+      $('#helpText').css('opacity', '0.5')
+
+      // $('#text').css('display', 'none')
+      // $('#click').css('display', 'block')
+
+
+      // 打亂
+      for (let i = 0; i < 20; i++) {
+        const randomA = Math.round(Math.random() * 15)
+        const randomB = Math.round(Math.random() * 15)
+        $('.order').eq(randomA).insertAfter($('.order').eq(randomB))
       }
-    }
 
-    setInterval(walk_poker, 300)
+      // 減少動畫秒數
+      let animationTime = 22
+
+      // 翻牌配對+勝利條件
+      $('#game').on('click', '.order', function () {
+        if (
+          $('.order').find('.card:not(.card_close)').length < 2 &&
+          $(this).find('.card').hasClass('card_close') &&
+          !$(this).find('.card').hasClass('card_ok')
+        ) {
+          $(this).find('.card').removeClass('card_close')
+        }
+
+        if ($('.order').find('.card:not(.card_close)').length === 2) {
+          if (
+            $('.order').find('.card:not(.card_close)').parents('.order').eq(0).attr('data_number') ===
+            $('.order').find('.card:not(.card_close)').parents('.order').eq(1).attr('data_number')
+          ) {
+            $('.order').find('.card:not(.card_close)').addClass('card_ok')
+            $('.order').find('.card:not(.card_close)').parents('.order').fadeTo(1000, 0)
+
+            // 為什麼這邊改成 2 秒，就不會 css('display', 'none') ?
+            setTimeout(function () {
+              $('.order').find('.card:not(.card_close)').parents('.order').css('display', 'none')
+            }, 1000)
+
+            // 不會減秒數??
+            // 寫法1
+
+            // $('.order').each((index, element) => {
+            //   $(element).find('.loopMove').css('animation-duration', `${animationTime -= 2}s`)
+            // });
+
+            // 寫法2
+            // $('.order').each((index, element) => {
+            //   $(element).find('.loopMove').animate({'animation-duration':`${animationTime -= 2}s`})
+            // });
+
+          }
+          setTimeout(function () {
+            // 翻回來
+            $('.order').find('.card:not(.card_close)').addClass('card_close')
+            //  過關
+            if ($('.order').find('.card_ok').length === $('.order').length)
+              alert('找到愛麗絲')
+            clearInterval(timer)
+            $(this).attr('disabled', false)
+          }, 1000)
+        }
+      })
+
+
+      //  撲克牌走路動畫
+      let deg = -10
+      const walk_poker = () => {
+        if (deg === -10) {
+          $('.rotate_-10').toggleClass('rotate_10')
+          $('.leg_R_-10deg').toggleClass('leg_R_10deg')
+          $('.foot_heart_R_-10deg').toggleClass('foot_heart_R_10deg')
+          $('.leg_L_-10deg').toggleClass('leg_L_10deg')
+          $('.foot_heart_L_-10deg').toggleClass('foot_heart_L_10deg')
+          deg = 10
+        } else if (deg === 10) {
+          $('.rotate_10').toggleClass('rotate_-10')
+          $('.leg_R_10deg').toggleClass('leg_R_-10deg')
+          $('.foot_heart_R_10deg').toggleClass('foot_heart_R_-10deg')
+          $('.leg_L_10deg').toggleClass('leg_L_-10deg')
+          $('.foot_heart_L_10deg').toggleClass('foot_heart_L_-10deg')
+          deg = -10
+        }
+      }
+
+      setInterval(walk_poker, 200)
+
+
+      // 倒數前的前置動作
+      setTimeout(function () {
+        $('.poker_content_heart').find('.leg_R').toggleClass('leg_R_-10deg')
+        $('.foot_heart_R').toggleClass('foot_heart_R_-10deg')
+        $('.poker_content_heart').find('.leg_L').toggleClass('leg_L_-10deg')
+        $('.foot_heart_L').toggleClass('foot_heart_L_-10deg')
+        $('.loopMove_preGame').toggleClass('loopMove_game')
+        $('.card').addClass('card_close')
+
+        setTimeout(function () {
+          $('.order').addClass('loopMove_game')
+          $('.order').addClass('rotate_-10')
+
+
+
+          // 開始倒數
+          let timer = setInterval(() => {
+            time--
+            $('#timeNumber').text(time)
+
+
+            if (time === 0) {
+              clearInterval(timer)
+              alert('解救失敗')
+              $('#start_btn').attr('disabled', false)
+
+
+              if (deg === -10 || deg === 10) {
+                $('.order').removeClass('rotate_-10 rotate_10')
+                $('.order').removeClass('loopMove_game')
+                $('#timeNumber').css('display', 'none')
+                $('#helpText').css('opacity', '1')
+
+              }
+            }
+
+          }, 1000);
+
+        }, 5000)
+
+        // 為什麼無效?
+        // setTimeout(function () {
+        //   $('.order').css('left', '120%')
+        //   $('.loopMove_preGame').toggleClass('loopMove_game')
+        // }, 3000)
+
+
+      }, 1500)
+
+
+
+
+    })
+
 
 
   </script>
