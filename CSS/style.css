@@ -2,70 +2,40 @@ body {
   background-color: #333;
   overflow: hidden;
 }
-
-#backTime {
+/* 遊戲視窗 */
+#game {
+  /* position: fixed; */
   position: absolute;
-  bottom: 20px;
-  height: 290px;
-  width: 295px;
-  left: 82%;
-  /* bottom: -5px; */
-  border: 3px solid rgb(255, 255, 255);
-  color: #fff;
-  font-family: '俐方體11號';
-  box-sizing: border-box;
-  padding-top: 10px;
-}
-
-#helpText {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 110px;
-}
-
-#timeNumber {
-  display: none;
-  position: absolute;
-  left: 36px;
-  top: 40px;
-  font-size: 180px;
-  color: red;
-  font-weight: 900;
-}
-
-#sec {
-  position: absolute;
-  right: 5px;
-  bottom: 18px;
-}
-
-#Alice {
-  position: absolute;
-  bottom: 20px;
-  height: 285px;
-  left: 57%;
-  /* bottom: -5px; */
-  width: 450px;
+  left: 50%;
+  top: 2%;
+  transform: translate(-50%, 0);
+  width: 94.5%;
+  height: 63%;
   border: 3px solid rgb(255, 255, 255);
   overflow: hidden;
 }
 
-#Alice img {
-  height: 98%;
+/* 下方功能鍵的box */
+#content {
   position: absolute;
-  bottom: 0;
-  left: 51.5%;
-  transform: translateX(-50%);
+  width: calc(94.5% + 6px);
+  height: 295px;
+  left: 50%;
+  bottom: 2%;
+  transform: translate(-50%, 0);
+  /* border: 1px solid red; */
+  overflow: hidden;
+  display: flex;
 }
 
+/* 遊戲大標box-解救倒數 */
 #title {
-  position: absolute;
+  /* position: absolute;
   bottom: 20px;
+  left: 50px; */
+  position: relative;
   height: 295px;
   width: 400px;
-  left: 50px;
   font-family: '俐方體11號';
   color: #fff;
   border: 3px solid rgb(255, 255, 255);
@@ -73,36 +43,33 @@ body {
   box-sizing: border-box;
   padding-top: 25px;
   font-weight: 600;
+  margin-right: 22.5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
+/* 遊戲大標-解救 */
 #title1 {
   font-size: 150px;
-  line-height: 140px;
+  /* line-height: 100px; */
 }
 
+/* 遊戲大標-愛麗絲 */
 #title2 {
   font-size: 110px;
 }
 
-#start_btnAll {
-  position: absolute;
-  bottom: 25px;
-  /* left: 50px; */
-  left: 24.5%;
-  /* transform: translateX(-50%); */
-  /* border: 1px solid red; */
-  text-align: center;
-  box-sizing: border-box;
-  padding-top: 30px;
-}
-
+/* 開始按鈕 */
 #start_btn {
+  /* position: absolute;
+  bottom: 25px;
+  left: 24.5%;
+  padding-top: 30px; */
+
   box-sizing: border-box;
   width: 600px;
   height: 288px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
   background-color: #fff;
   background-image: url(../images/cat.jpg);
   background-repeat: no-repeat;
@@ -117,17 +84,75 @@ body {
   font-weight: 700;
   font-family: '俐方體11號';
   cursor: pointer;
+  margin-right: 22.5px;
 }
 
-#text {
-  width: 600px;
+/* 愛麗絲圖片box */
+#Alice {
+  /* position: absolute;
+  bottom: 20px;
+  left: 57%; */
+  position: relative;
+  height: 285px;
+  width: 450px;
+  border: 3px solid rgb(255, 255, 255);
+  overflow: hidden;
+  margin-right: 22.5px;
+}
+
+/* 愛麗絲圖片 */
+#Alice img {
+  height: 98%;
   position: absolute;
-  font-size: 70px;
-  text-align: center;
+  bottom: 0;
+  left: 51.5%;
+  transform: translateX(-50%);
+}
+
+/* 倒數box */
+#backTime {
+  position: relative;
+  /* position: absolute;
+  bottom: 20px;
+  left: 82%;
+   */
+  height: 290px;
+  width: 295px;
+  border: 3px solid rgb(255, 255, 255);
   color: #fff;
   font-family: '俐方體11號';
+  box-sizing: border-box;
+  padding-top: 10px;
 }
 
+/* 倒數-字 */
+#helpText {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 110px;
+}
+
+/* 倒數-倒數中的數字 */
+#timeNumber {
+  display: none;
+  position: absolute;
+  left: 36px;
+  top: 40px;
+  font-size: 180px;
+  color: red;
+  font-weight: 900;
+}
+
+/* 倒數-單位(秒) */
+#sec {
+  position: absolute;
+  right: 5px;
+  bottom: 18px;
+}
+
+/* 遊戲規則(隱藏中，可能改成 alter 說明) */
 #rule {
   position: absolute;
   left: 500px;
@@ -144,824 +169,4 @@ body {
   box-shadow: 4px 4px 1px #888;
   line-height: 20px;
   display: none;
-}
-
-/* 時間 */
-#click {
-  /* position: absolute;
-  left: 950px;
-  bottom: 70px; */
-  height: 240px;
-  /* border: 1px solid red; */
-  font-size: 50px;
-  font-family: '俐方體11號';
-  color: #fff;
-  text-align: center;
-  display: none;
-}
-
-#time {
-  font-family: '俐方體11號';
-  font-size: 80px;
-}
-
-/* 遊戲視窗 */
-#game {
-  /* position: fixed; */
-  position: absolute;
-  left: 50%;
-  top: 2%;
-  transform: translate(-50%, 0);
-  width: 94.5%;
-  height: 63%;
-  border: 3px solid rgb(255, 255, 255);
-  overflow: hidden;
-}
-
-.card_close {
-  transform: rotateY(180deg);
-}
-
-.rotate_-10 {
-  transform: rotate(-10deg);
-}
-
-.rotate_10 {
-  transform: rotate(10deg);
-}
-
-/* ------------------腿 0deg------------ */
-
-.leg_R {
-  width: 5px;
-  height: 30px;
-  background-color: rgb(255, 255, 255);
-  position: absolute;
-  top: 260px;
-  left: 100px;
-  z-index: 1;
-}
-
-.leg_L {
-  width: 5px;
-  height: 30px;
-  background-color: rgb(255, 255, 255);
-  position: absolute;
-  top: 260px;
-  left: 195px;
-  z-index: 1;
-}
-
-.foot_heart_R {
-  height: 18px;
-  width: 25px;
-  background-color: rgb(224, 23, 23);
-  position: absolute;
-  top: 284px;
-  left: 90px;
-  /* transform: rotate(30deg); */
-  border-radius: 50px 50px 0 0;
-  z-index: 2;
-}
-
-.foot_heart_L {
-  height: 18px;
-  width: 25px;
-  background-color: rgb(224, 23, 23);
-  position: absolute;
-  top: 284px;
-  left: 185px;
-  /* transform: rotate(30deg); */
-  border-radius: 50px 50px 0 0;
-  z-index: 2;
-}
-
-.foot_spades_R {
-  height: 18px;
-  width: 25px;
-  background-color: rgb(0, 0, 0);
-  position: absolute;
-  top: 284px;
-  left: 90px;
-  /* transform: rotate(30deg); */
-  border-radius: 50px 50px 0 0;
-  z-index: 2;
-}
-
-.foot_spades_L {
-  height: 18px;
-  width: 25px;
-  background-color: rgb(0, 0, 0);
-  position: absolute;
-  top: 284px;
-  left: 185px;
-  /* transform: rotate(30deg); */
-  border-radius: 50px 50px 0 0;
-  z-index: 2;
-}
-
-/* ------------------ 腿 -10deg ------------ */
-.leg_R_-10deg {
-  transform: rotate(20deg);
-  width: 5px;
-  height: 25px;
-  background-color: rgb(255, 255, 255);
-  position: absolute;
-  top: 256px;
-  left: 100px;
-  z-index: 1;
-}
-
-.leg_L_-10deg {
-  transform: rotate(-10deg);
-  width: 5px;
-  height: 35px;
-  background-color: rgb(255, 255, 255);
-  position: absolute;
-  top: 256px;
-  left: 195px;
-  z-index: 1;
-}
-
-/*------------------腳 -10deg------------------  */
-.foot_heart_R_-10deg {
-  transform: rotate(20deg);
-  height: 18px;
-  width: 25px;
-  background-color: rgb(224, 23, 23);
-  position: absolute;
-  top: 279px;
-  left: 83px;
-  /* transform: rotate(30deg); */
-  border-radius: 50px 50px 0 0;
-  z-index: 2;
-}
-
-.foot_heart_L_-10deg {
-  transform: rotate(-10deg);
-  height: 18px;
-  width: 25px;
-  background-color: rgb(224, 23, 23);
-  position: absolute;
-  top: 287px;
-  left: 190px;
-  /* transform: rotate(30deg); */
-  border-radius: 50px 50px 0 0;
-  z-index: 2;
-}
-
-.foot_spades_R_-10deg {
-  transform: rotate(20deg);
-  height: 18px;
-  width: 25px;
-  background-color: rgb(0, 0, 0);
-  position: absolute;
-  top: 279px;
-  left: 83px;
-  /* transform: rotate(30deg); */
-  border-radius: 50px 50px 0 0;
-  z-index: 2;
-}
-
-.foot_spades_L_-10deg {
-  transform: rotate(-10deg);
-  height: 18px;
-  width: 25px;
-  background-color: rgb(0, 0, 0);
-  position: absolute;
-  top: 287px;
-  left: 190px;
-  /* transform: rotate(30deg); */
-  border-radius: 50px 50px 0 0;
-  z-index: 2;
-}
-
-/* ------------------ 腿 10deg ------------ */
-.leg_R_10deg {
-  transform: rotate(10deg);
-  width: 5px;
-  height: 35px;
-  background-color: rgb(255, 255, 255);
-  position: absolute;
-  top: 256px;
-  left: 100px;
-  z-index: 1;
-}
-
-.leg_L_10deg {
-  transform: rotate(-20deg);
-  width: 5px;
-  height: 25px;
-  background-color: rgb(255, 255, 255);
-  position: absolute;
-  top: 256px;
-  left: 195px;
-  z-index: 1;
-}
-
-/* ------------------腳 10deg------------------ */
-.foot_heart_R_10deg {
-  transform: rotate(10deg);
-  height: 18px;
-  width: 25px;
-  background-color: rgb(224, 23, 23);
-  position: absolute;
-  top: 287px;
-  left: 85px;
-  /* transform: rotate(30deg); */
-  border-radius: 50px 50px 0 0;
-  z-index: 2;
-}
-
-.foot_heart_L_10deg {
-  transform: rotate(-20deg);
-  height: 18px;
-  width: 25px;
-  background-color: rgb(224, 23, 23);
-  position: absolute;
-  top: 280px;
-  left: 194px;
-  /* transform: rotate(30deg); */
-  border-radius: 50px 50px 0 0;
-  z-index: 2;
-}
-
-.foot_spades_R_10deg {
-  transform: rotate(10deg);
-  height: 18px;
-  width: 25px;
-  background-color: rgb(0, 0, 0);
-  position: absolute;
-  top: 287px;
-  left: 85px;
-  /* transform: rotate(30deg); */
-  border-radius: 50px 50px 0 0;
-  z-index: 2;
-}
-
-.foot_spades_L_10deg {
-  transform: rotate(-20deg);
-  height: 18px;
-  width: 25px;
-  background-color: rgb(0, 0, 0);
-  position: absolute;
-  top: 280px;
-  left: 194px;
-  /* transform: rotate(30deg); */
-  border-radius: 50px 50px 0 0;
-  z-index: 2;
-}
-
-/* 紅桃 */
-.poker_content_heart {
-  position: relative;
-  width: 295px;
-  /* height: 350px; */
-  float: left;
-  margin-right: -80px;
-  /* border: 1px solid red; */
-  margin-bottom: 120px;
-  margin-top: -10px;
-}
-
-.card {
-  width: 140px;
-  height: 180px;
-  background-color: #fff;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 1s;
-  top: 75px;
-  left: 80px;
-}
-
-.card_front_heart {
-  width: 140px;
-  height: 175px;
-  background-image: url(../cards/1H.jpg);
-  background-color: #fff;
-  background-size: 88%;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: absolute;
-  top: 12px;
-  backface-visibility: hidden;
-  /* border: 1px solid red; */
-}
-
-.card_back_heart {
-  width: 140px;
-  height: 180px;
-  background-color: #fff;
-  background-image: url(../images/card-back.jpg);
-  background-size: 90%;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: absolute;
-  transform: rotateY(180deg);
-  backface-visibility: hidden;
-  /* border: 1px solid red; */
-}
-
-.head_heart {
-  width: 36px;
-  height: 60px;
-  position: absolute;
-  left: 50%;
-  top: 28px;
-  transform: translateX(-50%) rotate(180deg);
-  /* border: 1px solid red; */
-}
-
-.head_heart::before {
-  content: '';
-  width: 36px;
-  height: 60px;
-  border-radius: 50px 50px 0 0;
-  background-color: rgb(224, 23, 23);
-  position: absolute;
-  left: 10px;
-  transform: rotate(45deg);
-}
-
-.head_heart::after {
-  content: '';
-  width: 36px;
-  height: 60px;
-  border-radius: 50px 50px 0 0;
-  background-color: rgb(224, 23, 23);
-  position: absolute;
-  left: -7px;
-  transform: rotate(-45deg);
-}
-
-.face_heart {
-  width: 18px;
-  height: 40px;
-  position: absolute;
-  left: 50%;
-  top: 13px;
-  transform: translateX(-50%) rotate(180deg);
-  z-index: 1;
-  /* background-color: rgb(179, 221, 245); */
-  /* opacity: 0.5; */
-}
-
-.face_heart::before {
-  content: '';
-  width: 21px;
-  height: 35px;
-  border-radius: 50px 50px 0 0;
-  background-color: rgb(255, 255, 255);
-  position: absolute;
-  left: 2px;
-  top: 2.5px;
-  transform: rotate(45deg);
-}
-
-.face_heart::after {
-  content: '';
-  width: 21px;
-  height: 35px;
-  border-radius: 50px 50px 0 0;
-  background-color: rgb(255, 255, 255);
-  position: absolute;
-  left: -8px;
-  top: 2.5px;
-  transform: rotate(-45deg);
-}
-
-/* 嘴 */
-.mouth_heart {
-  width: 10px;
-  height: 10px;
-  /* background-color: aquamarine; */
-  position: absolute;
-  left: 14px;
-  top: 17px;
-  transform: rotate(180deg);
-  z-index: 2;
-}
-
-.mouth_heart::before {
-  content: '';
-  width: 5px;
-  height: 8px;
-  border-radius: 50px 50px 0 0;
-  background-color: rgb(150, 0, 0);
-  transform: rotate(45deg);
-  position: absolute;
-  left: 3.5px;
-}
-
-.mouth_heart::after {
-  content: '';
-  width: 5px;
-  height: 8px;
-  border-radius: 50px 50px 0 0;
-  background-color: rgb(150, 0, 0);
-  transform: rotate(-45deg);
-  position: absolute;
-  left: 1px;
-}
-
-/* 鼻子 */
-.nose_heart {
-  width: 10px;
-  height: 10px;
-  /* background-color: aquamarine; */
-  position: absolute;
-  left: 14px;
-  top: 32px;
-  transform: rotate(180deg);
-  z-index: 1;
-}
-
-.nose_heart::before {
-  content: '';
-  width: 9px;
-  height: 13px;
-  border-radius: 50px 50px 0 0;
-  background-color: rgb(250, 136, 221);
-  transform: rotate(45deg);
-  position: absolute;
-  left: 2px;
-}
-
-.nose_heart::after {
-  content: '';
-  width: 9px;
-  height: 13px;
-  border-radius: 50px 50px 0 0;
-  background-color: rgb(250, 136, 221);
-  transform: rotate(-45deg);
-  position: absolute;
-  left: -1px;
-}
-
-/* 手臂 */
-.arm_heart_R {
-  width: 5px;
-  height: 65px;
-  background-color: #fff;
-  position: absolute;
-  left: 80px;
-  top: 76px;
-  transform-origin: top center;
-  transform: rotate(30deg);
-}
-
-.arm2_heart_R {
-  width: 5px;
-  height: 35px;
-  background-color: #fff;
-  position: absolute;
-  left: 59px;
-  top: 126px;
-  transform: rotate(-40deg);
-}
-
-.hand_heart_R {
-  width: 12px;
-  height: 18px;
-  background-color: rgb(224, 23, 23);
-  border-radius: 50%;
-  position: absolute;
-  top: 155px;
-  left: 67px;
-  transform: rotate(35deg);
-  z-index: 1;
-}
-
-.arm_heart_L {
-  width: 5px;
-  height: 65px;
-  background-color: #ffffff;
-  position: absolute;
-  left: 214px;
-  top: 76px;
-  transform-origin: top center;
-  transform: rotate(-30deg);
-  z-index: 1;
-}
-
-.arm2_heart_L {
-  width: 5px;
-  height: 35px;
-  background-color: #ffffff;
-  position: absolute;
-  left: 235px;
-  top: 126px;
-  transform: rotate(40deg);
-}
-
-.hand_heart_L {
-  width: 12px;
-  height: 18px;
-  background-color: rgb(224, 23, 23);
-  border-radius: 50%;
-  position: absolute;
-  top: 155px;
-  left: 220px;
-  transform: rotate(-35deg);
-  z-index: 1;
-}
-
-/* 肩膀 */
-
-.shoulder_heart {
-  position: absolute;
-  top: 75px;
-  left: 90px;
-  width: 26px;
-  height: 13px;
-  background-color: rgb(224, 23, 23);
-  /* border-color: rgb(224, 23, 23); */
-  border-radius: 0 0 500px 500px;
-}
-
-.shoulder02_heart {
-  position: absolute;
-  top: 75px;
-  left: 180px;
-  width: 26px;
-  height: 13px;
-  background-color: rgb(224, 23, 23);
-  /* border-color: rgb(224, 23, 23); */
-  border-radius: 0 0 500px 500px;
-}
-
-/* 黑桃 */
-.poker_content_spades {
-  position: relative;
-  width: 295px;
-  /* height: 350px; */
-  float: left;
-  margin-right: -80px;
-  /* border: 1px solid red; */
-  margin-bottom: 120px;
-  margin-top: -10px;
-}
-
-.card_spades {
-  width: 140px;
-  height: 180px;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 1s;
-  top: 75px;
-  left: 80px;
-}
-
-.card_front_spades {
-  width: 140px;
-  height: 175px;
-  background-image: url(../cards/1S.jpg);
-  background-color: #fff;
-  background-size: 88%;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: absolute;
-  top: 12px;
-  backface-visibility: hidden;
-  /* border: 1px solid red; */
-}
-
-.card_back_spades {
-  width: 140px;
-  height: 180px;
-  background-color: #fff;
-  background-image: url(../images/card-back.jpg);
-  background-size: 90%;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: absolute;
-  transform: rotateY(180deg);
-  backface-visibility: hidden;
-  /* border: 1px solid red; */
-}
-
-.head_spades {
-  width: 36px;
-  height: 60px;
-  position: absolute;
-  left: 50%;
-  top: 28px;
-  transform: translateX(-50%) rotate(180deg);
-}
-
-.head_spades::before {
-  content: '';
-  width: 36px;
-  height: 60px;
-  border-radius: 50px 50px 0 0;
-  background-color: rgb(0, 0, 0);
-  position: absolute;
-  left: 10px;
-  transform: rotate(45deg);
-}
-
-.head_spades::after {
-  content: '';
-  width: 36px;
-  height: 60px;
-  border-radius: 50px 50px 0 0;
-  background-color: rgb(0, 0, 0);
-  position: absolute;
-  left: -7px;
-  transform: rotate(-45deg);
-}
-
-.face_spades {
-  width: 18px;
-  height: 40px;
-  position: absolute;
-  left: 12px;
-  top: 8px;
-  /* transform: translateX(-50%); */
-  z-index: 1;
-  /* background-color: rgb(179, 221, 245); */
-  /* opacity: 0.5; */
-}
-
-.face_spades::before {
-  content: '';
-  width: 21px;
-  height: 35px;
-  border-radius: 50px 50px 0 0;
-  background-color: rgb(255, 255, 255);
-  position: absolute;
-  left: 2px;
-  top: 2.5px;
-  transform: rotate(45deg);
-}
-
-.face_spades::after {
-  content: '';
-  width: 21px;
-  height: 35px;
-  border-radius: 50px 50px 0 0;
-  background-color: rgb(255, 255, 255);
-  position: absolute;
-  left: -8px;
-  top: 2.5px;
-  transform: rotate(-45deg);
-}
-
-/* 嘴 */
-.mouth_spades {
-  width: 10px;
-  height: 10px;
-  /* background-color: aquamarine; */
-  position: absolute;
-  left: 14px;
-  top: 20px;
-  /* transform: rotate(180deg); */
-  z-index: 2;
-}
-
-.mouth_spades::before {
-  content: '';
-  width: 5px;
-  height: 8px;
-  border-radius: 50px 50px 0 0;
-  background-color: rgb(0, 0, 0);
-  transform: rotate(45deg);
-  position: absolute;
-  left: 3.5px;
-}
-
-.mouth_spades::after {
-  content: '';
-  width: 5px;
-  height: 8px;
-  border-radius: 50px 50px 0 0;
-  background-color: rgb(0, 0, 0);
-  transform: rotate(-45deg);
-  position: absolute;
-  left: 1px;
-}
-
-/* 鼻子 */
-.nose_spades {
-  width: 10px;
-  height: 10px;
-  /* background-color: aquamarine; */
-  position: absolute;
-  left: 14.7px;
-  top: 34px;
-  /* transform: rotate(180deg); */
-  z-index: 1;
-}
-
-.nose_spades::before {
-  content: '';
-  width: 9px;
-  height: 13px;
-  border-radius: 50px 50px 0 0;
-  background-color: rgb(250, 136, 221);
-  transform: rotate(45deg);
-  position: absolute;
-  left: 2px;
-}
-
-.nose_spades::after {
-  content: '';
-  width: 9px;
-  height: 13px;
-  border-radius: 50px 50px 0 0;
-  background-color: rgb(250, 136, 221);
-  transform: rotate(-45deg);
-  position: absolute;
-  left: -1px;
-}
-
-/* 手臂 */
-.arm_spades_R {
-  width: 5px;
-  height: 65px;
-  background-color: #fff;
-  position: absolute;
-  left: 80px;
-  top: 76px;
-  transform-origin: top center;
-  transform: rotate(30deg);
-}
-
-.arm2_spades_R {
-  width: 5px;
-  height: 35px;
-  background-color: #fff;
-  position: absolute;
-  left: 59px;
-  top: 126px;
-  transform: rotate(-40deg);
-}
-
-.hand_spades_R {
-  width: 12px;
-  height: 18px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 50%;
-  position: absolute;
-  top: 155px;
-  left: 67px;
-  transform: rotate(35deg);
-  z-index: 1;
-}
-
-.arm_spades_L {
-  width: 5px;
-  height: 65px;
-  background-color: #ffffff;
-  position: absolute;
-  left: 214px;
-  top: 76px;
-  transform-origin: top center;
-  transform: rotate(-30deg);
-  z-index: 1;
-}
-
-.arm2_spades_L {
-  width: 5px;
-  height: 35px;
-  background-color: #ffffff;
-  position: absolute;
-  left: 235px;
-  top: 126px;
-  transform: rotate(40deg);
-}
-
-.hand_spades_L {
-  width: 12px;
-  height: 18px;
-  background-color: rgb(0, 0, 0);
-  border-radius: 50%;
-  position: absolute;
-  top: 155px;
-  left: 220px;
-  transform: rotate(-35deg);
-  z-index: 1;
-}
-
-.shoulder_spades {
-  position: absolute;
-  top: 75px;
-  left: 90px;
-  width: 26px;
-  height: 13px;
-  background-color: rgb(0, 0, 0);
-  /* border-color: rgb(224, 23, 23); */
-  border-radius: 0 0 500px 500px;
-}
-
-.shoulder02_spades {
-  position: absolute;
-  top: 75px;
-  left: 180px;
-  width: 26px;
-  height: 13px;
-  background-color: rgb(0, 0, 0);
-  /* border-color: rgb(224, 23, 23); */
-  border-radius: 0 0 500px 500px;
 }

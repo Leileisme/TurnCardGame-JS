@@ -7,6 +7,8 @@
   <title>愛麗絲夢遊仙境</title>
 
   <link rel="stylesheet" href="./CSS/style.css">
+  <link rel="stylesheet" href="./CSS/poker.css">
+  <link rel="stylesheet" href="./CSS/pokerMove.css">
   <link rel="stylesheet" href="./CSS/animation.css">
 
 
@@ -19,28 +21,30 @@
 </head>
 
 <body>
-  <div id="Alice">
-    <img src="./images/愛麗絲4.png">
-  </div>
 
   <div id="game"></div>
 
-  <div id="start_btnAll">
-    <!-- <div id="text">解救愛麗絲</div> -->
-    <!-- 按開始後變的字 -->
-    <div id="click">救援倒數:<span id="time">??</span>秒</div>
+  <div id="content">
+    <!-- 解救愛麗絲 title -->
+    <div id="title">
+      <span id="title1">解救</span><br>
+      <span id="title2">愛麗絲</span>
+    </div>
+
+    <!-- 開始按鈕 -->
     <input type="button" id="start_btn" value="START">
-  </div>
 
-  <div id="title">
-    <span id="title1">解救</span><br>
-    <span id="title2">愛麗絲</span>
-  </div>
+    <!-- 愛麗絲 -->
+    <div id="Alice">
+      <img src="./images/愛麗絲4.png">
+    </div>
 
-  <div id="backTime">
-    <span id="helpText">救援<br>倒數</span><br>
-    <span id="timeNumber">30</span>
-    <span id="sec">/秒</span>
+    <!-- 救援倒數 -->
+    <div id="backTime">
+      <span id="helpText">救援<br>倒數</span><br>
+      <span id="timeNumber">30</span>
+      <span id="sec">/秒</span>
+    </div>
   </div>
 
   <!-- 遊戲說明也許可以用跳的 -->
@@ -217,7 +221,7 @@
 
 
 
-
+    // 製造撲克牌人
     for (let i = 0; i < 8; i++) {
       $('#game').append(`
       <div class="poker_content_heart order   loopMove ">
@@ -296,7 +300,6 @@
       $(this).parents('.order').attr('data_number', number)
     })
 
-
     $('.card_spades').each(function (index) {
       const number = index % 8 + 1
       console.log(index, number)
@@ -304,18 +307,14 @@
       $(this).parents('.order').attr('data_number', number)
     })
 
-    // 點擊開始遊戲
 
+    // 點擊開始遊戲
     $('#start_btn').click(function () {
       $(this).attr('disabled', true)
       let time = 15
       $('#timeNumber').text(time)
       $('#timeNumber').css('display', 'block')
       $('#helpText').css('opacity', '0.5')
-
-      // $('#text').css('display', 'none')
-      // $('#click').css('display', 'block')
-
 
       // 打亂
       for (let i = 0; i < 20; i++) {
