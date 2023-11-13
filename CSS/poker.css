@@ -1,18 +1,36 @@
 /* 紅桃 */
 .poker_content_heart {
   position: relative;
-  width: 295px;
+  /* width: 295px; */
   /* height: 350px; */
-  float: left;
-  margin-right: -80px;
+  /* float: left; */
+  /* margin-right: -80px; */
   /* border: 1px solid red; */
-  margin-bottom: 120px;
-  margin-top: -10px;
+  /* margin-bottom: 120px;*/
+  /* margin-top: -80px; */
+  margin-right: 4%;
 }
+
+/* 黑桃 */
+.poker_content_spades {
+  position: relative;
+  margin-right: 4%;
+
+  /* width: 295px; */
+  /* height: 350px; */
+  /* float: left; */
+  /* margin-right: -80px; */
+  /* border: 1px solid red; */
+  /* margin-bottom: 120px;
+  margin-top: -10px; */
+  /* margin-top: -80px; */
+
+}
+
 
 .card {
   width: 140px;
-  height: 180px;
+  /* height: 180px; */
   background-color: #fff;
   position: relative;
   transform-style: preserve-3d;
@@ -23,14 +41,14 @@
 
 .card_front_heart {
   width: 140px;
-  height: 175px;
-  background-image: url(../cards/1H.jpg);
+  height: 192px;
+  background-image: url(../images/cards/1H.jpg);
   background-color: #fff;
   background-size: 80%;
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
-  top: 12px;
+  /* top: 12px; */
   backface-visibility: hidden;
   /* border: 1px solid red; */
 }
@@ -53,9 +71,9 @@
   width: 36px;
   height: 60px;
   position: absolute;
-  left: 50%;
+  left: 95%;
   top: 28px;
-  transform: translateX(-50%) rotate(180deg);
+  transform: rotate(180deg);
   /* border: 1px solid red; */
 }
 
@@ -278,20 +296,10 @@
 }
 
 /* 黑桃 */
-.poker_content_spades {
-  position: relative;
-  width: 295px;
-  /* height: 350px; */
-  float: left;
-  margin-right: -80px;
-  /* border: 1px solid red; */
-  margin-bottom: 120px;
-  margin-top: -10px;
-}
 
 .card_spades {
   width: 140px;
-  height: 180px;
+  /* height: 180px; */
   position: relative;
   transform-style: preserve-3d;
   transition: transform 1s;
@@ -301,14 +309,14 @@
 
 .card_front_spades {
   width: 140px;
-  height: 175px;
+  height: 192px;
   background-image: url(../cards/1S.jpg);
   background-color: #fff;
   background-size: 80%;
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
-  top: 12px;
+  /* top: 12px; */
   backface-visibility: hidden;
   /* border: 1px solid red; */
 }
@@ -331,9 +339,9 @@
   width: 36px;
   height: 60px;
   position: absolute;
-  left: 50%;
+  left: 95%;
   top: 28px;
-  transform: translateX(-50%) rotate(180deg);
+  transform:  rotate(180deg);
 }
 
 .head_spades::before {

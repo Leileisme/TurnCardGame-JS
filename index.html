@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>愛麗絲夢遊仙境</title>
+  <title>解救愛麗絲</title>
+  <link rel="icon" href="./images/alice_logo.png">
 
   <link rel="stylesheet" href="./CSS/style.css">
   <link rel="stylesheet" href="./CSS/poker.css">
@@ -27,8 +28,8 @@
   <div id="content">
     <!-- 解救愛麗絲 title -->
     <div id="title">
-      <span id="title1">解救</span><br>
-      <span id="title2">愛麗絲</span>
+      <div id="title1">解救</div><br>
+      <div id="title2">愛麗絲</div>
     </div>
 
     <!-- 開始按鈕 -->
@@ -36,7 +37,7 @@
 
     <!-- 愛麗絲 -->
     <div id="Alice">
-      <img src="./images/愛麗絲4.png">
+      <img src="./images/alice.png">
     </div>
 
     <!-- 救援倒數 -->
@@ -296,14 +297,14 @@
     $('.card_heart').each(function (index) {
       const number = index % 8 + 1
       console.log(index, number)
-      $(this).find('.card_front_heart').css('background-image', `url(./cards/${number}H.jpg)`)
+      $(this).find('.card_front_heart').css('background-image', `url(./images/cards/${number}H.jpg)`)
       $(this).parents('.order').attr('data_number', number)
     })
 
     $('.card_spades').each(function (index) {
       const number = index % 8 + 1
       console.log(index, number)
-      $(this).find('.card_front_spades').css('background-image', `url(./cards/${number}S.jpg)`)
+      $(this).find('.card_front_spades').css('background-image', `url(./images/cards/${number}S.jpg)`)
       $(this).parents('.order').attr('data_number', number)
     })
 
@@ -311,7 +312,13 @@
     // 點擊開始遊戲
     $('#start_btn').click(function () {
       $(this).attr('disabled', true)
-      let time = 15
+
+      // 遊戲時間
+      let time = 50
+      // 遊戲時間個位數：位置校正
+      if (time < 10) {
+        $('#timeNumber').css('left', '85px')
+      }
       $('#timeNumber').text(time)
       $('#timeNumber').css('display', 'block')
       $('#helpText').css('opacity', '0.5')
@@ -323,136 +330,235 @@
         $('.order').eq(randomA).insertAfter($('.order').eq(randomB))
       }
 
-      // 減少動畫秒數
-      let animationTime = 22
 
       // 翻牌配對+勝利條件
-      $('#game').on('click', '.order', function () {
-        if (
-          $('.order').find('.card:not(.card_close)').length < 2 &&
-          $(this).find('.card').hasClass('card_close') &&
-          !$(this).find('.card').hasClass('card_ok')
-        ) {
-          $(this).find('.card').removeClass('card_close')
-        }
 
-        if ($('.order').find('.card:not(.card_close)').length === 2) {
+      setTimeout(function () {
+        $('#game').on('click', '.order', function () {
           if (
-            $('.order').find('.card:not(.card_close)').parents('.order').eq(0).attr('data_number') ===
-            $('.order').find('.card:not(.card_close)').parents('.order').eq(1).attr('data_number')
+            $('.order').find('.card:not(.card_close)').length < 2 &&
+            $(this).find('.card').hasClass('card_close') &&
+            !$(this).find('.card').hasClass('card_ok')
           ) {
-            $('.order').find('.card:not(.card_close)').addClass('card_ok')
-            $('.order').find('.card:not(.card_close)').parents('.order').fadeTo(1000, 0)
-
-            // 為什麼這邊改成 2 秒，就不會 css('display', 'none') ?
-            setTimeout(function () {
-              $('.order').find('.card:not(.card_close)').parents('.order').css('display', 'none')
-            }, 1000)
-
-            // 不會減秒數??
-            // 寫法1
-
-            // $('.order').each((index, element) => {
-            //   $(element).find('.loopMove').css('animation-duration', `${animationTime -= 2}s`)
-            // });
-
-            // 寫法2
-            // $('.order').each((index, element) => {
-            //   $(element).find('.loopMove').animate({'animation-duration':`${animationTime -= 2}s`})
-            // });
-
+            $(this).find('.card').removeClass('card_close')
           }
-          setTimeout(function () {
-            // 翻回來
-            $('.order').find('.card:not(.card_close)').addClass('card_close')
-            //  過關
-            if ($('.order').find('.card_ok').length === $('.order').length)
-              alert('找到愛麗絲')
-            clearInterval(timer)
-            $(this).attr('disabled', false)
-          }, 1000)
-        }
-      })
+
+          if ($('.order').find('.card:not(.card_close)').length === 2) {
+            if (
+              $('.order').find('.card:not(.card_close)').parents('.order').eq(0).attr('data_number') ===
+              $('.order').find('.card:not(.card_close)').parents('.order').eq(1).attr('data_number')
+            ) {
+              $('.order').find('.card:not(.card_close)').addClass('card_ok')
+              $('.order').find('.card:not(.card_close)').parents('.order').fadeTo(1000, 0)
 
 
-      //  撲克牌走路動畫
-      let deg = -10
-      const walk_poker = () => {
-        if (deg === -10) {
-          $('.rotate_-10').toggleClass('rotate_10')
-          $('.leg_R_-10deg').toggleClass('leg_R_10deg')
-          $('.foot_heart_R_-10deg').toggleClass('foot_heart_R_10deg')
-          $('.leg_L_-10deg').toggleClass('leg_L_10deg')
-          $('.foot_heart_L_-10deg').toggleClass('foot_heart_L_10deg')
-          deg = 10
-        } else if (deg === 10) {
-          $('.rotate_10').toggleClass('rotate_-10')
-          $('.leg_R_10deg').toggleClass('leg_R_-10deg')
-          $('.foot_heart_R_10deg').toggleClass('foot_heart_R_-10deg')
-          $('.leg_L_10deg').toggleClass('leg_L_-10deg')
-          $('.foot_heart_L_10deg').toggleClass('foot_heart_L_-10deg')
-          deg = -10
-        }
-      }
+              // 為什麼這邊改成 2 秒，就不會 css('display', 'none') ?
+              setTimeout(function () {
+                $('.order').find('.card:not(.card_close)').parents('.order').css('display', 'none')
+              }, 1000)
 
-      setInterval(walk_poker, 200)
+              // 減少動畫秒數  不會減動畫執行秒數??
+              let animationTime = 22
+              // 寫法1
+              // $('.order').each((index, element) => {
+              //   $(element).find('.loopMove').css('animation-duration', `${animationTime -= 2}s`)
+              // });
+
+              // 寫法2
+              // $('.order').each((index, element) => {
+              //   $(element).find('.loopMove').animate({'animation-duration':`${animationTime -= 2}s`})
+              // });
+
+            }
+            setTimeout(function () {
+              // 翻回來
+              $('.order').find('.card:not(.card_close)').addClass('card_close')
+              //  過關
+              if ($('.order').find('.card_ok').length === $('.order').length)
+                alert('找到愛麗絲')
+              clearInterval(timer)
+              $(this).attr('disabled', false)
+            }, 1000)
+          }
+        })
+      }, 3500)
+
 
 
       // 倒數前的前置動作
       setTimeout(function () {
+
+        // 讓紅桃腳動
         $('.poker_content_heart').find('.leg_R').toggleClass('leg_R_-10deg')
-        $('.foot_heart_R').toggleClass('foot_heart_R_-10deg')
         $('.poker_content_heart').find('.leg_L').toggleClass('leg_L_-10deg')
+        $('.foot_heart_R').toggleClass('foot_heart_R_-10deg')
         $('.foot_heart_L').toggleClass('foot_heart_L_-10deg')
-        $('.loopMove_preGame').toggleClass('loopMove_game')
+
+        // 卡片翻面
         $('.card').addClass('card_close')
 
+        // 行走動畫、卡牌左右搖擺、左邊退場
         setTimeout(function () {
-          $('.order').addClass('loopMove_game')
           $('.order').addClass('rotate_-10')
+          $('.order').addClass('loopMove_preGame')
+        }, 2000)
+
+        // 卡牌退場後移動到右邊看不見處
+        setTimeout(function () {
+          $('.order').css('left', '120%')
+        }, 7900)
+
+        // 換從右到左的行走動畫(無限循環)
+        setTimeout(function () {
+          $('.order').removeClass('loopMove_preGame')
+          $('.order').addClass('loopMove_game')
+        }, 8000)
 
 
-
+        // 開始行走後：開始倒數
+        setTimeout(function () {
           // 開始倒數
           let timer = setInterval(() => {
             time--
             $('#timeNumber').text(time)
 
+            if (time < 10) {
+              $('#timeNumber').css('left', '85px')
+            }
+
 
             if (time === 0) {
+              // 時間復原
               clearInterval(timer)
-              alert('解救失敗')
+              // 倒數秒數消失
+              $('#timeNumber').css('display', 'none')
+              // 打開遊戲紐
               $('#start_btn').attr('disabled', false)
+              // 清空遊戲區
+              $('#game').empty()
+              // 「救援倒數」字透明度恢復
+              $('#helpText').css('opacity', '1')
+              // 跳訊息
+              setTimeout(function () {
+                alert('解救失敗')
+              }, 100)
 
 
-              if (deg === -10 || deg === 10) {
-                $('.order').removeClass('rotate_-10 rotate_10')
-                $('.order').removeClass('loopMove_game')
-                $('#timeNumber').css('display', 'none')
-                $('#helpText').css('opacity', '1')
+              // 回復初始預設狀態
+              // 製造撲克牌人
+              for (let i = 0; i < 8; i++) {
+                $('#game').append(`
+      <div class="poker_content_heart order   loopMove ">
 
+      <div class="arm_heart_R"></div>
+      <div class="arm2_heart_R"></div>
+
+      <div class="arm_heart_L"></div>
+      <div class="arm2_heart_L"></div>
+
+
+      <div class="hand_heart_R"> </div>
+      <div class="hand_heart_L"></div>
+
+      <div class="card card_heart">
+        <div class="card_front_heart"></div>
+        <div class="card_back_heart"></div>
+      </div>
+
+      <div class="head_heart">
+        <div class="face_heart"></div>
+        <div class="nose_heart"></div>
+        <div class="mouth_heart"></div>
+      </div>
+
+      <div class="shoulder_heart"></div>
+      <div class="shoulder02_heart"></div>
+
+      <div class="leg_R"></div>
+      <div class="foot_heart_R"></div>
+
+      <div class="leg_L"></div>
+      <div class="foot_heart_L"></div>
+
+      </div>`)
+
+                $('#game').append(`
+
+      <div class="poker_content_spades order  loopMove ">
+    <div class="arm_spades_R"></div>
+    <div class="arm2_spades_R"></div>
+
+    <div class="arm_spades_L"></div>
+    <div class="arm2_spades_L"></div>
+
+    <div class="hand_spades_R"> </div>
+    <div class="hand_spades_L"></div>
+
+    <div class="card card_spades">
+      <div class="card_front_spades"></div>
+      <div class="card_back_spades"></div>
+    </div>
+
+    <div class="head_spades">
+      <div class="face_spades"></div>
+      <div class="nose_spades"></div>
+      <div class="mouth_spades"></div>
+    </div>
+
+    <div class="shoulder_spades"></div>
+    <div class="shoulder02_spades"></div>
+
+    <div class="leg_R"></div>
+    <div class="foot_spades_R"></div>
+
+    <div class="leg_L"></div>
+    <div class="foot_spades_L"></div>
+  </div>`)
               }
+
+              //  把數字給撲克牌 ： setting 基本場面
+              $('.card_heart').each(function (index) {
+                const number = index % 8 + 1
+                console.log(index, number)
+                $(this).find('.card_front_heart').css('background-image', `url(./images/cards/${number}H.jpg)`)
+                $(this).parents('.order').attr('data_number', number)
+              })
+
+              $('.card_spades').each(function (index) {
+                const number = index % 8 + 1
+                console.log(index, number)
+                $(this).find('.card_front_spades').css('background-image', `url(./images/cards/${number}S.jpg)`)
+                $(this).parents('.order').attr('data_number', number)
+              })
             }
 
           }, 1000);
-
-        }, 5000)
-
-        // 為什麼無效?
-        // setTimeout(function () {
-        //   $('.order').css('left', '120%')
-        //   $('.loopMove_preGame').toggleClass('loopMove_game')
-        // }, 3000)
-
+        }, 3500)
 
       }, 1500)
-
-
-
-
     })
 
+    //  撲克牌走路動畫
+    let deg = -10
+    const walk_poker = () => {
+      if (deg === -10) {
+        $('.rotate_-10').toggleClass('rotate_10')
+        $('.leg_R_-10deg').toggleClass('leg_R_10deg')
+        $('.foot_heart_R_-10deg').toggleClass('foot_heart_R_10deg')
+        $('.leg_L_-10deg').toggleClass('leg_L_10deg')
+        $('.foot_heart_L_-10deg').toggleClass('foot_heart_L_10deg')
+        deg = 10
+      } else if (deg === 10) {
+        $('.rotate_10').toggleClass('rotate_-10')
+        $('.leg_R_10deg').toggleClass('leg_R_-10deg')
+        $('.foot_heart_R_10deg').toggleClass('foot_heart_R_-10deg')
+        $('.leg_L_10deg').toggleClass('leg_L_-10deg')
+        $('.foot_heart_L_10deg').toggleClass('foot_heart_L_-10deg')
+        deg = -10
+      }
+    }
 
+    setInterval(walk_poker, 200)
 
   </script>
 </body>

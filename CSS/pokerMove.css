@@ -6,10 +6,12 @@
 /* 撲克牌 - rotate 左右動畫 */
 .rotate_-10 {
   transform: rotate(-10deg);
+  transform-origin: right center;
 }
 
 .rotate_10 {
   transform: rotate(10deg);
+  transform-origin: right center;
 }
 
 /* ------------------腿+腳 0deg (遊戲前預設狀態)------------ */

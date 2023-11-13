@@ -46,7 +46,7 @@
   0% {
     left: 120%;
   }
-  5% {
+  0.5% {
     left: 100%;
   }
   95% {
@@ -79,8 +79,8 @@
 
 .loopMove_preGame {
   animation-name: loopMove_preGame;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
+  animation-duration: 7s;
+  animation-iteration-count: 1;
   animation-timing-function: linear;
   white-space: nowrap;
 }
