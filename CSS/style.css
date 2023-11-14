@@ -86,7 +86,7 @@ body {
   box-shadow: 4px 4px 1px #888;
   font-weight: 700;
   font-family: '俐方體11號';
-  cursor: pointer;
+  cursor: url(../images/pointer.png) 50 50, auto;
   margin-right: 22.5px;
 }
 
