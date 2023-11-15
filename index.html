@@ -225,8 +225,11 @@
 
 
     // 點擊開始遊戲
+    let canclick = false
     $('#start_btn').click(function () {
       $(this).attr('disabled', true)
+
+      canclick = false
 
       // 遊戲時間
       let time = 90
@@ -246,55 +249,11 @@
         $('.order').eq(randomA).insertAfter($('.order').eq(randomB))
       }
 
+      let animationTime = 20
 
       // 翻牌配對+勝利條件
       setTimeout(function () {
-        $('#game').on('click', '.order', function () {
-          if (
-            $('.order').find('.card:not(.card_close)').length < 2 &&
-            $(this).find('.card').hasClass('card_close') &&
-            !$(this).find('.card').hasClass('card_ok')
-          ) {
-            $(this).find('.card').removeClass('card_close')
-          }
-
-          if ($('.order').find('.card:not(.card_close)').length === 2) {
-            if (
-              $('.order').find('.card:not(.card_close)').parents('.order').eq(0).attr('data_number') ===
-              $('.order').find('.card:not(.card_close)').parents('.order').eq(1).attr('data_number')
-            ) {
-              $('.order').find('.card:not(.card_close)').addClass('card_ok')
-              $('.order').find('.card:not(.card_close)').parents('.order').fadeTo(1000, 0)
-
-              // 將配對成功 opacity:0 的牌 display:none
-              setTimeout(function () {
-                $('.card.card_ok').parents('.order').css('display', 'none')
-              }, 1000)
-
-              // 減少動畫秒數  不會減動畫執行秒數??
-              // let animationTime = 22
-              // 寫法1
-              // $('.order').each((index, element) => {
-              //   $(element).find('.loopMove').css('animation-duration', `${animationTime -= 2}s`)
-              // });
-
-              // 寫法2
-              // $('.order').each((index, element) => {
-              //   $(element).find('.loopMove').animate({'animation-duration':`${animationTime -= 2}s`})
-              // });
-
-            }
-            setTimeout(function () {
-              // 翻回來
-              $('.order').find('.card:not(.card_close)').addClass('card_close')
-              //  過關
-              if ($('.order').find('.card_ok').length === $('.order').length)
-                alert('愛麗絲救援成功!!!')
-              // clearInterval(timer)
-              $(this).attr('disabled', false)
-            }, 1000)
-          }
-        })
+        canclick = true
       }, 3500)
 
 
@@ -451,6 +410,56 @@
 
       }, 1500)
     })
+
+    $('#game').on('click', '.order', function () {
+      if (!canclick) return
+      if (
+        $('.order').find('.card:not(.card_close)').length < 2 &&
+        $(this).find('.card').hasClass('card_close') &&
+        !$(this).find('.card').hasClass('card_ok')
+      ) {
+        $(this).find('.card').removeClass('card_close')
+      }
+
+      if ($('.order').find('.card:not(.card_close)').length === 2) {
+        if (
+          $('.order').find('.card:not(.card_close)').parents('.order').eq(0).attr('data_number') ===
+          $('.order').find('.card:not(.card_close)').parents('.order').eq(1).attr('data_number')
+        ) {
+          $('.order').find('.card:not(.card_close)').addClass('card_ok')
+          $('.order').find('.card:not(.card_close)').parents('.order').fadeTo(1000, 0)
+
+          // 將配對成功 opacity:0 的牌 display:none
+          setTimeout(function () {
+            $('.card.card_ok').parents('.order').css('display', 'none')
+          }, 1000)
+
+          // 減少動畫秒數  不會減動畫執行秒數??
+          // 寫法1
+          animationTime -= 2
+          $('.order').each((index, element) => {
+            console.log(this)
+            $(this).css('animation-duration', `${animationTime}s`)
+          });
+
+          // 寫法2
+          // $('.order').each((index, element) => {
+          //   $(element).find('.loopMove').animate({'animation-duration':`${animationTime -= 2}s`})
+          // });
+
+        }
+        setTimeout(function () {
+          // 翻回來
+          $('.order').find('.card:not(.card_close)').addClass('card_close')
+          //  過關
+          if ($('.order').find('.card_ok').length === $('.order').length)
+            alert('愛麗絲救援成功!!!')
+          // clearInterval(timer)
+          $(this).attr('disabled', false)
+        }, 1000)
+      }
+    })
+
 
     //  撲克牌走路動畫
     let deg = -10
