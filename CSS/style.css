@@ -1,3 +1,52 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/* #audio {
+  width: 84px;
+}
+
+#audioBox {
+  transform: translate(65px, 58.4%);
+} */
+
+#audio::-webkit-media-controls-play-button,
+#audio::-webkit-media-controls-pause-button,
+#audio::-webkit-media-controls-seek-back-button,
+#audio::-webkit-media-controls-seek-forward-button {
+  background-color: #333;
+  /* 修改按鈕背景顏色 */
+  border: none; /* 移除按鈕邊框 */
+  border-radius: 50%; /* 圓角 */
+}
+
+.SwaTitle {
+  font-weight: 900;
+}
+
+.SwalHtml {
+  margin: auto;
+  padding: 10px;
+  /* border: 1px #333 solid; */
+  width: 94%;
+  border-radius: 8px;
+  background-color: #333;
+  font-family: '俐方體11號';
+  color: #fff;
+  font-size: 14px;
+  margin-top: 15px;
+  padding-top: 25px;
+  padding-bottom: 20px;
+}
+
+.SwalB {
+  position: relative;
+  top: -5px;
+}
+
+/* style="color: rgb(8, 141, 141); font-family: '俐方體11號';" */
+
 body {
   background-color: #333;
   overflow: hidden;
@@ -90,14 +139,20 @@ body {
   margin-right: 22.5px;
 }
 
-/* 愛麗絲圖片box */
-#Alice {
+#Alice_hero_box {
   position: relative;
   height: 284px;
   width: 450px;
   border: 3px solid rgb(255, 255, 255);
   overflow: hidden;
   margin-right: 22.5px;
+  font-family: '俐方體11號';
+  color: #fff;
+}
+
+/* 愛麗絲圖片box */
+#Alice {
+  /* display: none; */
 }
 
 /* 愛麗絲圖片 */
@@ -109,6 +164,55 @@ body {
   transform: translateX(-50%);
   -webkit-user-drag: none;
 }
+
+/* 英雄榜 */
+#hero {
+  display: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#hero h1 {
+  font-size: 2.8rem;
+  padding-top: 6px;
+}
+
+#hero table {
+  padding-top: 2px;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#hero tr {
+  width: 90%;
+  text-align: center;
+}
+
+#hero tr :nth-child(1) {
+  width: 60px;
+}
+
+#hero tr :nth-child(2) {
+  width: 200px;
+}
+#hero tr :nth-child(3) {
+  width: 110px;
+}
+
+#hero td,
+#hero th {
+  /* width: 1px; */
+  border: 2px solid rgb(255, 255, 255);
+  font-size: 1.5rem;
+  padding: 0.8px 3px;
+}
+
+/* #hero th {
+  border: 0;
+} */
 
 /* 倒數box */
 #backTime {
