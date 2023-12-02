@@ -301,6 +301,7 @@
     let animationTime = 20
     let canClickPoker = false
     let time = 0
+    let animationTimeMonitor = 20
     // 之後可能設英雄榜
     // let passTime = 0
     let success = false
@@ -375,6 +376,22 @@
               $('#timeNumber').css('left', '85px')
             }
 
+            // 配對成功後 減少秒數 動畫  這邊時間沒有完全對上
+            let timeMonitor = time - 8
+            // let animationTimeMonitor = 20
+            if (timeMonitor % animationTimeMonitor === 0) {
+              cardOkLength = $('.card_ok').length
+              animationTime -= (cardOkLength - beforeOkLength) / 2
+              beforeOkLength = cardOkLength
+              $('.order').each((index, element) => {
+                $('.order').css('animation-duration', `${animationTime}s`)
+                animationTimeMonitor = animationTime
+              })
+            }
+            console.log(time, '秒數')
+            console.log(animationTime, '動畫秒數')
+            console.log(animationTimeMonitor, '動畫秒數監聽')
+            console.log(cardOkLength, '動畫秒數監聽 與 配對成功的卡')
 
 
             // 解救失敗
@@ -596,13 +613,14 @@
               })
             }
           }, 1000);
-        }, 3500)
-      }, 1500)
+        }, 4000)
+      }, 2000)
     })
 
     // 翻牌配對+勝利條件
 
-    let cardOkLength = 4
+    let cardOkLength = 0
+    let beforeOkLength = 0
     $('#game').on('click', '.order', function () {
       if (!canClickPoker) return
       if (
@@ -625,15 +643,15 @@
             $('.card.card_ok').parents('.order').css('display', 'none')
           }, 1000)
 
-          // 配對成功後 減少秒數
-          if ($('.card_ok').length === cardOkLength) {
-            animationTime -= 1
-            $('.order').each((index, element) => {
-              $('.order').css('animation-duration', `${animationTime}s`).css('transition', `$1s`)
+          // 配對成功後 減少秒數 動畫'
+          // if ($('.card_ok').length === cardOkLength) {
+          //   animationTime -= 1
+          //   $('.order').each((index, element) => {
+          //     $('.order').css('animation-duration', `${animationTime}s`).css('transition', `$1s`)
 
-            })
-            cardOkLength += 2
-          }
+          //   })
+          //   cardOkLength += 2
+          // }
         }
 
 
