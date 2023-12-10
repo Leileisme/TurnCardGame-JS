@@ -23,9 +23,9 @@
 </head>
 
 <body>
-  <div id="audioBox">
+  <!-- <div id="audioBox">
     <audio id="audio" src="./music/028.醉夢.mp3" autoplay></audio>
-  </div>
+  </div> -->
   <div id="game"></div>
 
   <div id="content">
@@ -181,35 +181,35 @@
     $('#music')
 
 
-    Swal.fire({
-      title: "解救愛麗絲",
-      html: `愛麗絲被撲克牌士兵團團包住了！ 
-      馬上就要錯過回家的時間 ，
-      在時間內解救愛絲吧，讓她平安回家~   <br>
+    // Swal.fire({
+    //   title: "解救愛麗絲",
+    //   html: `愛麗絲被撲克牌士兵團團包住了！ 
+    //   馬上就要錯過回家的時間 ，
+    //   在時間內解救愛絲吧，讓她平安回家~   <br>
 
-      <div class="SwalHtml">
-      <b style="font-size: 20px; " class="SwalB">任務內容</b>
-      <br>
-      <span >在 <span style="color: rgb(255, 255, 0); font-size: 18px;" >60 秒內 </span>
-      將相同數字的「撲克牌士兵」配對！
-      <br>
-      小心他們會隨機換位走動喔~ 
-      <br>
-      按「start」開始任務！<br>
-      ( 士兵走動時就可開始抓囉！)
-    </span>
-      </div>`,
-      imageUrl: "./images/background.jpg",
-      imageWidth: 1000,
-      imageAlt: "Custom image",
-      customClass: {
-        title: '解救愛麗絲'
-      },
-      // 不允許點擊外面關閉對話框
-      allowOutsideClick: false,
-      // 不允許按 ESC 關閉對話框
-      allowEscapeKey: false
-    });
+    //   <div class="SwalHtml">
+    //   <b style="font-size: 20px; " class="SwalB">任務內容</b>
+    //   <br>
+    //   <span >在 <span style="color: rgb(255, 255, 0); font-size: 18px;" >60 秒內 </span>
+    //   將相同數字的「撲克牌士兵」配對！
+    //   <br>
+    //   小心他們會隨機換位走動喔~ 
+    //   <br>
+    //   按「start」開始任務！<br>
+    //   ( 士兵走動時就可開始抓囉！)
+    // </span>
+    //   </div>`,
+    //   imageUrl: "./images/background.jpg",
+    //   imageWidth: 1000,
+    //   imageAlt: "Custom image",
+    //   customClass: {
+    //     title: '解救愛麗絲'
+    //   },
+    //   // 不允許點擊外面關閉對話框
+    //   allowOutsideClick: false,
+    //   // 不允許按 ESC 關閉對話框
+    //   allowEscapeKey: false
+    // });
 
 
 
@@ -301,7 +301,12 @@
     let animationTime = 20
     let canClickPoker = false
     let time = 0
-    let animationTimeMonitor = 20
+
+    // 動畫
+    // let animationTimeMonitor = 20
+    // let timeMonitor = 0
+
+
     // 之後可能設英雄榜
     // let passTime = 0
     let success = false
@@ -319,6 +324,13 @@
 
       // 遊戲時間
       time = 99
+
+      // 動畫
+      // timeMonitor = time
+      // setTimeout(function () {
+      //   timeMonitor = time + 4
+      // }, 12000)
+
       // 遊戲時間個位數：位置校正
       if (time < 10) {
         $('#timeNumber').css('left', '85px')
@@ -362,9 +374,6 @@
           $('.order').addClass('loopMove_game')
         }, 8000)
 
-        // 卡片配對的張數
-
-
         // 開始行走後：開始倒數
         setTimeout(function () {
           // 開始倒數
@@ -377,29 +386,31 @@
             }
 
             // 配對成功後 減少秒數 動畫  這邊時間沒有完全對上
-            let timeMonitor = time - 8
-            // let animationTimeMonitor = 20
-            if (timeMonitor % animationTimeMonitor === 0) {
-              cardOkLength = $('.card_ok').length
-              animationTime -= (cardOkLength - beforeOkLength) / 2
-              beforeOkLength = cardOkLength
-              $('.order').each((index, element) => {
-                $('.order').css('animation-duration', `${animationTime}s`)
-                animationTimeMonitor = animationTime
-              })
-            }
-            console.log(time, '秒數')
-            console.log(animationTime, '動畫秒數')
-            console.log(animationTimeMonitor, '動畫秒數監聽')
-            console.log(cardOkLength, '動畫秒數監聽 與 配對成功的卡')
+            // let timeMonitor = time 移到外面以免重新賦值
+            // timeMonitor--
+            // if (timeMonitor % animationTimeMonitor === 0) {
+            //   cardOkLength = $('.card_ok').length
+            //   animationTime -= (cardOkLength - beforeOkLength) / 2
+            //   beforeOkLength = cardOkLength
+            //   $('.order').each((index, element) => {
+            //     $('.order').css('animation-duration', `${animationTime}s`)
+            //     animationTimeMonitor = animationTime
+            //   })
+            // }
+            // console.log(time, '秒數')
+            // console.log(timeMonitor, '秒數(監聽)')
+            // console.log(animationTime, '動畫秒數')
+            // console.log(animationTimeMonitor, '動畫秒數監聽')
+            // console.log(cardOkLength, '動畫秒數監聽 與 配對成功的卡')
 
 
             // 解救失敗
             if (time === 0) {
               // 時間復原
               clearInterval(timer)
-              // 倒數秒數消失
+              // 倒數秒數消失與歸位
               $('#timeNumber').css('display', 'none')
+              $('#timeNumber').css('left', '36px')
               // 打開遊戲紐
               $('#start_btn').attr('disabled', false)
               // 清空遊戲區
@@ -510,8 +521,9 @@
             if (success) {
               // 時間復原
               clearInterval(timer)
-              // 倒數秒數消失
+              // 倒數秒數消失與歸位
               $('#timeNumber').css('display', 'none')
+              $('#timeNumber').css('left', '36px')
               // 打開遊戲紐
               $('#start_btn').attr('disabled', false)
               // 清空遊戲區
