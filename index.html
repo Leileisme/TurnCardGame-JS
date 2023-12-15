@@ -92,82 +92,6 @@
   </div>
 
 
-
-
-  <!-- 紅桃 -->
-
-  <!-- <div class="poker_content_heart order  rotate_-10">
-
-    <div class="arm_heart_R"></div>
-    <div class="arm2_heart_R"></div>
-
-    <div class="arm_heart_L"></div>
-    <div class="arm2_heart_L"></div>
-
-
-    <div class="hand_heart_R"> </div>
-    <div class="hand_heart_L"></div>
-
-
-    <div class="card card_close card_heart">
-      <div class="card_front_heart"></div>
-      <div class="card_back_heart"></div>
-    </div>
-
-    <div class="head_heart">
-      <div class="face_heart"></div>
-      <div class="nose_heart"></div>
-      <div class="mouth_heart"></div>
-    </div>
-
-    <div class="shoulder_heart"></div>
-    <div class="shoulder02_heart"></div>
-
-    <div class="leg_R_-10deg"></div>
-    <div class="foot_heart_R_-10deg"></div>
-
-    <div class="leg_L_-10deg"></div>
-    <div class="foot_heart_L_-10deg"></div>
-
-  </div> -->
-
-
-  <!-- 黑桃 -->
-
-  <!-- <div class="poker_content_spades order rotate_-10">
-    <div class="arm_spades_R"></div>
-    <div class="arm2_spades_R"></div>
-
-    <div class="arm_spades_L"></div>
-    <div class="arm2_spades_L"></div>
-
-    <div class="hand_spades_R"> </div>
-    <div class="hand_spades_L"></div>
-
-    <div class="card card_close card_spades">
-      <div class="card_front_spades"></div>
-      <div class="card_back_spades"></div>
-    </div>
-
-    <div class="head_spades">
-      <div class="face_spades"></div>
-      <div class="nose_spades"></div>
-      <div class="mouth_spades"></div>
-    </div>
-
-    <div class="shoulder_spades"></div>
-    <div class="shoulder02_spades"></div>
-
-    <div class="leg_R"></div>
-    <div class="foot_spades_R"></div>
-
-    <div class="leg_L"></div>
-    <div class="foot_spades_L"></div>
-  </div> -->
-
-  <img src="" alt="">
-
-
   </div>
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'
@@ -181,35 +105,35 @@
     $('#music')
 
 
-    // Swal.fire({
-    //   title: "解救愛麗絲",
-    //   html: `愛麗絲被撲克牌士兵團團包住了！ 
-    //   馬上就要錯過回家的時間 ，
-    //   在時間內解救愛絲吧，讓她平安回家~   <br>
+    Swal.fire({
+      title: "解救愛麗絲",
+      html: `愛麗絲被撲克牌士兵團團包住了！ 
+      馬上就要錯過回家的時間 ，
+      在時間內解救愛絲吧，讓她平安回家~   <br>
 
-    //   <div class="SwalHtml">
-    //   <b style="font-size: 20px; " class="SwalB">任務內容</b>
-    //   <br>
-    //   <span >在 <span style="color: rgb(255, 255, 0); font-size: 18px;" >60 秒內 </span>
-    //   將相同數字的「撲克牌士兵」配對！
-    //   <br>
-    //   小心他們會隨機換位走動喔~ 
-    //   <br>
-    //   按「start」開始任務！<br>
-    //   ( 士兵走動時就可開始抓囉！)
-    // </span>
-    //   </div>`,
-    //   imageUrl: "./images/background.jpg",
-    //   imageWidth: 1000,
-    //   imageAlt: "Custom image",
-    //   customClass: {
-    //     title: '解救愛麗絲'
-    //   },
-    //   // 不允許點擊外面關閉對話框
-    //   allowOutsideClick: false,
-    //   // 不允許按 ESC 關閉對話框
-    //   allowEscapeKey: false
-    // });
+      <div class="SwalHtml">
+      <b style="font-size: 20px; " class="SwalB">任務內容</b>
+      <br>
+      <span >在 <span style="color: rgb(255, 255, 0); font-size: 18px;" >99 秒內 </span>
+      將相同數字的「撲克牌士兵」配對！
+      <br>
+      小心他們會隨機換位走動喔~ 
+      <br>
+      按「start」開始任務！<br>
+      ( 士兵走動時就可開始抓囉！)
+    </span>
+      </div>`,
+      imageUrl: "./images/background.jpg",
+      imageWidth: 1000,
+      imageAlt: "Custom image",
+      customClass: {
+        title: '解救愛麗絲'
+      },
+      // 不允許點擊外面關閉對話框
+      allowOutsideClick: false,
+      // 不允許按 ESC 關閉對話框
+      allowEscapeKey: false
+    });
 
 
 
@@ -298,18 +222,16 @@
 
 
     // loopMoveGame 動畫的時間
-    let animationTime = 20
     let canClickPoker = false
     let time = 0
-
-    // 動畫
-    // let animationTimeMonitor = 20
-    // let timeMonitor = 0
+    let success = false
+    // 動畫的時間
+    let animationTime = 20
+    let timeMonitor = 0
 
 
     // 之後可能設英雄榜
     // let passTime = 0
-    let success = false
 
 
     // 點擊開始遊戲
@@ -321,17 +243,16 @@
         canClickPoker = true
       }, 3500)
 
-
       // 遊戲時間
       time = 99
 
-      // 動畫
-      // timeMonitor = time
-      // setTimeout(function () {
-      //   timeMonitor = time + 4
-      // }, 12000)
+      // 動畫 - 把進場動畫的時間加回來，為避免 0 時，餘數可以===0，故等一段時間加
+      timeMonitor = time
+      setTimeout(function () {
+        timeMonitor = time + 4
+      }, 12000)
 
-      // 遊戲時間個位數：位置校正
+      // 倒數時間：個位數位置校正
       if (time < 10) {
         $('#timeNumber').css('left', '85px')
       }
@@ -387,21 +308,21 @@
 
             // 配對成功後 減少秒數 動畫  這邊時間沒有完全對上
             // let timeMonitor = time 移到外面以免重新賦值
-            // timeMonitor--
-            // if (timeMonitor % animationTimeMonitor === 0) {
-            //   cardOkLength = $('.card_ok').length
-            //   animationTime -= (cardOkLength - beforeOkLength) / 2
-            //   beforeOkLength = cardOkLength
-            //   $('.order').each((index, element) => {
-            //     $('.order').css('animation-duration', `${animationTime}s`)
-            //     animationTimeMonitor = animationTime
-            //   })
-            // }
-            // console.log(time, '秒數')
-            // console.log(timeMonitor, '秒數(監聽)')
-            // console.log(animationTime, '動畫秒數')
-            // console.log(animationTimeMonitor, '動畫秒數監聽')
-            // console.log(cardOkLength, '動畫秒數監聽 與 配對成功的卡')
+            // (99 - timeMonitor) 經過的時間 % animationTime(動畫時間) 整除
+            timeMonitor--
+            if ((99 - timeMonitor) % animationTime === 0) {
+              cardOkLength = $('.card_ok').length
+              animationTime -= (cardOkLength - beforeOkLength) / 2
+              beforeOkLength = cardOkLength
+              $('.order').each((index, element) => {
+                $('.order').css('animation-duration', `${animationTime}s`)
+                // animationTime = animationTime
+              })
+            }
+            console.log(time, '秒數')
+            console.log((99 - timeMonitor), '秒數(經過的時間)')
+            console.log(animationTime, '動畫秒數')
+            console.log(cardOkLength, '動畫秒數監聽 與 配對成功的卡')
 
 
             // 解救失敗
@@ -654,16 +575,6 @@
           setTimeout(function () {
             $('.card.card_ok').parents('.order').css('display', 'none')
           }, 1000)
-
-          // 配對成功後 減少秒數 動畫'
-          // if ($('.card_ok').length === cardOkLength) {
-          //   animationTime -= 1
-          //   $('.order').each((index, element) => {
-          //     $('.order').css('animation-duration', `${animationTime}s`).css('transition', `$1s`)
-
-          //   })
-          //   cardOkLength += 2
-          // }
         }
 
 
