@@ -12,38 +12,36 @@
   <link rel="stylesheet" href="./CSS/pokerMove.css">
   <link rel="stylesheet" href="./CSS/animation.css">
 
-
   <style>
     @font-face {
       font-family: '俐方體11號';
       src: url(./font/Cubic_11_1.010_R.ttf);
-      /* color: rgb(3, 121, 121); */
     }
   </style>
+
 </head>
 
 <body>
-  <!-- <div id="audioBox">
-    <audio id="audio" src="./music/028.醉夢.mp3" autoplay></audio>
-  </div> -->
+  <!-- 放入卡牌區 -->
   <div id="game"></div>
 
+  <!-- 下方格子區 -->
   <div id="content">
-    <!-- 解救愛麗絲 title -->
+
+    <!-- 左1 - 解救愛麗絲 -->
     <div id="title">
       <div id="title1">解救</div><br>
       <div id="title2">愛麗絲</div>
     </div>
 
-    <!-- 開始按鈕 -->
+    <!-- 左2 - 開始按鈕 -->
     <input type="button" id="start_btn" value="START">
 
-    <!-- 愛麗絲 -->
+    <!-- 左3 - 愛麗絲img -->
     <div id="Alice_hero_box">
       <div id="Alice">
         <img src="./images/alice.png">
       </div>
-
       <!-- /之後可能加英雄榜 -->
       <!-- <div id="hero">
         <h1>英雄榜</h1>
@@ -80,10 +78,9 @@
           </tr>
         </table>
       </div> -->
-
-
     </div>
-    <!-- 救援倒數 -->
+
+    <!-- 左4 - 救援倒數 -->
     <div id="backTime">
       <span id="helpText">救援<br>倒數</span><br>
       <span id="timeNumber">30</span>
@@ -102,9 +99,7 @@
     "></script>
   <script>
 
-    $('#music')
-
-
+    // 進入遊戲時，跳出的說明
     Swal.fire({
       title: "解救愛麗絲",
       html: `愛麗絲被撲克牌士兵團團包住了！ 
@@ -115,11 +110,9 @@
       <b style="font-size: 20px; " class="SwalB">任務內容</b>
       <br>
       <span >在 <span style="color: rgb(255, 255, 0); font-size: 18px;" >99 秒內 </span>
-      將相同數字的「撲克牌士兵」配對！
+      將相同數字的「撲克牌士兵」點擊配對！
       <br>
-      小心他們會隨機換位走動喔~ 
-      <br>
-      按「start」開始任務！<br>
+      按「start」開始任務！小心士兵會隨機換位喔~<br>
       ( 士兵走動時就可開始抓囉！)
     </span>
       </div>`,
@@ -221,11 +214,10 @@
     })
 
 
-    // loopMoveGame 動畫的時間
+
     let canClickPoker = false
     let time = 0
     let success = false
-    // 動畫的時間
     let animationTime = 20
     let timeMonitor = 0
 
@@ -246,7 +238,7 @@
       // 遊戲時間
       time = 99
 
-      // 動畫 - 把進場動畫的時間加回來，為避免 0 時，餘數可以===0，故等一段時間加
+      // 動畫 - 把進場動畫的時間加回來，為避免 0 時可整除動畫秒數 ，故等一段時間加
       timeMonitor = time
       setTimeout(function () {
         timeMonitor = time + 4
@@ -278,7 +270,7 @@
         // 卡片翻面
         $('.card').addClass('card_close')
 
-        // 行走動畫、卡牌左右搖擺、左邊退場
+        // 卡牌左右搖擺，行走動畫、左邊退場(動畫執行1次)
         setTimeout(function () {
           $('.order').addClass('rotate_-10')
           $('.order').addClass('loopMove_preGame')
@@ -306,7 +298,6 @@
               $('#timeNumber').css('left', '85px')
             }
 
-            // 配對成功後 減少秒數 動畫  這邊時間沒有完全對上
             // let timeMonitor = time 移到外面以免重新賦值
             // (99 - timeMonitor) 經過的時間 % animationTime(動畫時間) 整除
             timeMonitor--
@@ -316,13 +307,14 @@
               beforeOkLength = cardOkLength
               $('.order').each((index, element) => {
                 $('.order').css('animation-duration', `${animationTime}s`)
-                // animationTime = animationTime
+
               })
             }
-            console.log(time, '秒數')
-            console.log((99 - timeMonitor), '秒數(經過的時間)')
-            console.log(animationTime, '動畫秒數')
-            console.log(cardOkLength, '動畫秒數監聽 與 配對成功的卡')
+
+            // console.log(time, '倒數秒數')
+            // console.log((99 - timeMonitor), '開始經過的秒數')
+            // console.log(animationTime, '動畫秒數')
+            // console.log(cardOkLength, '動畫秒數監聽 與 配對成功的卡')
 
 
             // 解救失敗
@@ -351,78 +343,78 @@
                   // 不允許按 ESC 關閉對話框
                   allowEscapeKey: false
                 });
-
               }, 100)
 
               // 失敗回復初始狀態
               // 製造撲克牌人
               for (let i = 0; i < 8; i++) {
                 $('#game').append(`
-      <div class="poker_content_heart order   loopMove ">
-
-      <div class="arm_heart_R"></div>
-      <div class="arm2_heart_R"></div>
-
-      <div class="arm_heart_L"></div>
-      <div class="arm2_heart_L"></div>
-
-
-      <div class="hand_heart_R"> </div>
-      <div class="hand_heart_L"></div>
-
-      <div class="card card_heart">
-        <div class="card_front_heart"></div>
-        <div class="card_back_heart"></div>
-      </div>
-
-      <div class="head_heart">
-        <div class="face_heart"></div>
-        <div class="nose_heart"></div>
-        <div class="mouth_heart"></div>
-      </div>
-
-      <div class="shoulder_heart"></div>
-      <div class="shoulder02_heart"></div>
-
-      <div class="leg_R"></div>
-      <div class="foot_heart_R"></div>
-
-      <div class="leg_L"></div>
-      <div class="foot_heart_L"></div>
-
-      </div>`)
+                  <div class="poker_content_heart order   loopMove ">
+            
+                  <div class="arm_heart_R"></div>
+                  <div class="arm2_heart_R"></div>
+            
+                  <div class="arm_heart_L"></div>
+                  <div class="arm2_heart_L"></div>
+            
+            
+                  <div class="hand_heart_R"> </div>
+                  <div class="hand_heart_L"></div>
+            
+                  <div class="card card_heart">
+                    <div class="card_front_heart"></div>
+                    <div class="card_back_heart"></div>
+                  </div>
+            
+                  <div class="head_heart">
+                    <div class="face_heart"></div>
+                    <div class="nose_heart"></div>
+                    <div class="mouth_heart"></div>
+                  </div>
+            
+                  <div class="shoulder_heart"></div>
+                  <div class="shoulder02_heart"></div>
+            
+                  <div class="leg_R"></div>
+                  <div class="foot_heart_R"></div>
+            
+                  <div class="leg_L"></div>
+                  <div class="foot_heart_L"></div>
+            
+                  </div>`)
                 $('#game').append(`
-      <div class="poker_content_spades order  loopMove ">
-    <div class="arm_spades_R"></div>
-    <div class="arm2_spades_R"></div>
-
-    <div class="arm_spades_L"></div>
-    <div class="arm2_spades_L"></div>
-
-    <div class="hand_spades_R"> </div>
-    <div class="hand_spades_L"></div>
-
-    <div class="card card_spades">
-      <div class="card_front_spades"></div>
-      <div class="card_back_spades"></div>
-    </div>
-
-    <div class="head_spades">
-      <div class="face_spades"></div>
-      <div class="nose_spades"></div>
-      <div class="mouth_spades"></div>
-    </div>
-
-    <div class="shoulder_spades"></div>
-    <div class="shoulder02_spades"></div>
-
-    <div class="leg_R"></div>
-    <div class="foot_spades_R"></div>
-
-    <div class="leg_L"></div>
-    <div class="foot_spades_L"></div>
-  </div>`)
+                  <div class="poker_content_spades order  loopMove ">
+                    <div class="arm_spades_R"></div>
+                    <div class="arm2_spades_R"></div>
+                
+                    <div class="arm_spades_L"></div>
+                    <div class="arm2_spades_L"></div>
+                
+                    <div class="hand_spades_R"> </div>
+                    <div class="hand_spades_L"></div>
+                
+                    <div class="card card_spades">
+                      <div class="card_front_spades"></div>
+                      <div class="card_back_spades"></div>
+                    </div>
+                
+                    <div class="head_spades">
+                      <div class="face_spades"></div>
+                      <div class="nose_spades"></div>
+                      <div class="mouth_spades"></div>
+                    </div>
+                
+                    <div class="shoulder_spades"></div>
+                    <div class="shoulder02_spades"></div>
+                
+                    <div class="leg_R"></div>
+                    <div class="foot_spades_R"></div>
+                
+                    <div class="leg_L"></div>
+                    <div class="foot_spades_L"></div>
+                  </div>`)
               }
+
               //  把數字給撲克牌 ： setting 基本場面
               $('.card_heart').each(function (index) {
                 const number = index % 8 + 1
@@ -463,71 +455,69 @@
               // 製造撲克牌人
               for (let i = 0; i < 8; i++) {
                 $('#game').append(`
-      <div class="poker_content_heart order   loopMove ">
-      
-      <div class="arm_heart_R"></div>
-      <div class="arm2_heart_R"></div>
-      
-      <div class="arm_heart_L"></div>
-      <div class="arm2_heart_L"></div>
-      
-      
-      <div class="hand_heart_R"> </div>
-      <div class="hand_heart_L"></div>
-      
-      <div class="card card_heart">
-        <div class="card_front_heart"></div>
-        <div class="card_back_heart"></div>
-      </div>
-    
-      <div class="head_heart">
-        <div class="face_heart"></div>
-        <div class="nose_heart"></div>
-        <div class="mouth_heart"></div>
-      </div>
-    
-      <div class="shoulder_heart"></div>
-      <div class="shoulder02_heart"></div>
-    
-      <div class="leg_R"></div>
-      <div class="foot_heart_R"></div>
-    
-      <div class="leg_L"></div>
-      <div class="foot_heart_L"></div>
-    
-      </div>`)
+                  <div class="poker_content_heart order   loopMove ">
+                  
+                  <div class="arm_heart_R"></div>
+                  <div class="arm2_heart_R"></div>
+                  
+                  <div class="arm_heart_L"></div>
+                  <div class="arm2_heart_L"></div>
+                  
+                  <div class="hand_heart_R"> </div>
+                  <div class="hand_heart_L"></div>
+                  
+                  <div class="card card_heart">
+                    <div class="card_front_heart"></div>
+                    <div class="card_back_heart"></div>
+                  </div>
+                
+                  <div class="head_heart">
+                    <div class="face_heart"></div>
+                    <div class="nose_heart"></div>
+                    <div class="mouth_heart"></div>
+                  </div>
+                
+                  <div class="shoulder_heart"></div>
+                  <div class="shoulder02_heart"></div>
+                
+                  <div class="leg_R"></div>
+                  <div class="foot_heart_R"></div>
+                
+                  <div class="leg_L"></div>
+                  <div class="foot_heart_L"></div>
+                
+                  </div>`)
                 $('#game').append(`
-
-      <div class="poker_content_spades order  loopMove ">
-      <div class="arm_spades_R"></div>
-      <div class="arm2_spades_R"></div>
-      
-      <div class="arm_spades_L"></div>
-      <div class="arm2_spades_L"></div>
-      
-      <div class="hand_spades_R"> </div>
-      <div class="hand_spades_L"></div>
-      
-      <div class="card card_spades">
-        <div class="card_front_spades"></div>
-        <div class="card_back_spades"></div>
-      </div>
-    
-      <div class="head_spades">
-        <div class="face_spades"></div>
-        <div class="nose_spades"></div>
-        <div class="mouth_spades"></div>
-      </div>
-    
-      <div class="shoulder_spades"></div>
-      <div class="shoulder02_spades"></div>
-    
-      <div class="leg_R"></div>
-      <div class="foot_spades_R"></div>
-    
-      <div class="leg_L"></div>
-      <div class="foot_spades_L"></div>
-      </div>`)
+                  <div class="poker_content_spades order  loopMove ">
+                    <div class="arm_spades_R"></div>
+                    <div class="arm2_spades_R"></div>
+                    
+                    <div class="arm_spades_L"></div>
+                    <div class="arm2_spades_L"></div>
+                    
+                    <div class="hand_spades_R"> </div>
+                    <div class="hand_spades_L"></div>
+                    
+                    <div class="card card_spades">
+                      <div class="card_front_spades"></div>
+                      <div class="card_back_spades"></div>
+                    </div>
+                  
+                    <div class="head_spades">
+                      <div class="face_spades"></div>
+                      <div class="nose_spades"></div>
+                      <div class="mouth_spades"></div>
+                    </div>
+                  
+                    <div class="shoulder_spades"></div>
+                    <div class="shoulder02_spades"></div>
+                  
+                    <div class="leg_R"></div>
+                    <div class="foot_spades_R"></div>
+                  
+                    <div class="leg_L"></div>
+                    <div class="foot_spades_L"></div>
+                  </div>`)
               }
 
               //  把數字給撲克牌 ： setting 基本場面
@@ -551,7 +541,6 @@
     })
 
     // 翻牌配對+勝利條件
-
     let cardOkLength = 0
     let beforeOkLength = 0
     $('#game').on('click', '.order', function () {
@@ -577,12 +566,9 @@
           }, 1000)
         }
 
-
-
         setTimeout(function () {
           // 翻回來
           $('.order').find('.card:not(.card_close)').addClass('card_close')
-
           //  過關
           if ($('.order').find('.card_ok').length === $('.order').length) {
             // 跳訊息
@@ -599,17 +585,13 @@
                 allowEscapeKey: false
               });
             }, 100)
-
             success = true
-
-
           }
         }, 500)
       }
     })
 
-
-    //  撲克牌走路動畫
+    //  撲克牌「動腳/搖擺」動畫
     let deg = -10
     const walk_poker = () => {
       if (deg === -10) {
@@ -630,7 +612,6 @@
     }
 
     setInterval(walk_poker, 200)
-
   </script>
 </body>
 

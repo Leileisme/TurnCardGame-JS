@@ -34,14 +34,6 @@
   }
 }
 
-/* .loopMove {
-  animation-name: loopMove;
-  animation-duration: 22s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  white-space: nowrap;
-} */
-
 @keyframes loopMove_game {
   0% {
     left: 120%;
