@@ -1,0 +1,522 @@
+/* 紅桃 */
+.poker_content_heart {
+  position: relative;
+  margin-right: 4%;
+}
+
+/* 黑桃 */
+.poker_content_spades {
+  position: relative;
+  margin-right: 4%;
+}
+
+.card {
+  width: 140px;
+  /* height: 180px; */
+  background-color: #fff;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  top: 75px;
+  left: 80px;
+}
+
+.card_front_heart {
+  width: 140px;
+  height: 192px;
+  background-image: url(../images/cards/1H.jpg);
+  background-color: #fff;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.card_back_heart {
+  width: 140px;
+  height: 180px;
+  background-color: #fff;
+  background-image: url(../images/card-back.jpg);
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+
+.head_heart {
+  width: 36px;
+  height: 60px;
+  position: absolute;
+  left: 95%;
+  top: 28px;
+  transform: rotate(180deg);
+}
+
+.head_heart::before {
+  content: '';
+  width: 36px;
+  height: 60px;
+  border-radius: 50px 50px 0 0;
+  background-color: rgb(224, 23, 23);
+  position: absolute;
+  left: 10px;
+  transform: rotate(45deg);
+}
+
+.head_heart::after {
+  content: '';
+  width: 36px;
+  height: 60px;
+  border-radius: 50px 50px 0 0;
+  background-color: rgb(224, 23, 23);
+  position: absolute;
+  left: -7px;
+  transform: rotate(-45deg);
+}
+
+.face_heart {
+  width: 18px;
+  height: 40px;
+  position: absolute;
+  left: 50%;
+  top: 13px;
+  transform: translateX(-50%) rotate(180deg);
+  z-index: 1;
+}
+
+.face_heart::before {
+  content: '';
+  width: 21px;
+  height: 35px;
+  border-radius: 50px 50px 0 0;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  left: 2px;
+  top: 2.5px;
+  transform: rotate(45deg);
+}
+
+.face_heart::after {
+  content: '';
+  width: 21px;
+  height: 35px;
+  border-radius: 50px 50px 0 0;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  left: -8px;
+  top: 2.5px;
+  transform: rotate(-45deg);
+}
+
+/* 嘴 */
+.mouth_heart {
+  width: 10px;
+  height: 10px;
+  /* background-color: aquamarine; */
+  position: absolute;
+  left: 14px;
+  top: 17px;
+  transform: rotate(180deg);
+  z-index: 2;
+}
+
+.mouth_heart::before {
+  content: '';
+  width: 5px;
+  height: 8px;
+  border-radius: 50px 50px 0 0;
+  background-color: rgb(150, 0, 0);
+  transform: rotate(45deg);
+  position: absolute;
+  left: 3.5px;
+}
+
+.mouth_heart::after {
+  content: '';
+  width: 5px;
+  height: 8px;
+  border-radius: 50px 50px 0 0;
+  background-color: rgb(150, 0, 0);
+  transform: rotate(-45deg);
+  position: absolute;
+  left: 1px;
+}
+
+/* 鼻子 */
+.nose_heart {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  left: 14px;
+  top: 32px;
+  transform: rotate(180deg);
+  z-index: 1;
+}
+
+.nose_heart::before {
+  content: '';
+  width: 9px;
+  height: 13px;
+  border-radius: 50px 50px 0 0;
+  background-color: rgb(250, 136, 221);
+  transform: rotate(45deg);
+  position: absolute;
+  left: 2px;
+}
+
+.nose_heart::after {
+  content: '';
+  width: 9px;
+  height: 13px;
+  border-radius: 50px 50px 0 0;
+  background-color: rgb(250, 136, 221);
+  transform: rotate(-45deg);
+  position: absolute;
+  left: -1px;
+}
+
+/* 手臂 */
+.arm_heart_R {
+  width: 5px;
+  height: 65px;
+  background-color: #fff;
+  position: absolute;
+  left: 80px;
+  top: 76px;
+  transform-origin: top center;
+  transform: rotate(30deg);
+}
+
+.arm2_heart_R {
+  width: 5px;
+  height: 35px;
+  background-color: #fff;
+  position: absolute;
+  left: 59px;
+  top: 126px;
+  transform: rotate(-40deg);
+}
+
+.hand_heart_R {
+  width: 12px;
+  height: 18px;
+  background-color: rgb(224, 23, 23);
+  border-radius: 50%;
+  position: absolute;
+  top: 155px;
+  left: 67px;
+  transform: rotate(35deg);
+  z-index: 1;
+}
+
+.arm_heart_L {
+  width: 5px;
+  height: 65px;
+  background-color: #ffffff;
+  position: absolute;
+  left: 214px;
+  top: 76px;
+  transform-origin: top center;
+  transform: rotate(-30deg);
+  z-index: 1;
+}
+
+.arm2_heart_L {
+  width: 5px;
+  height: 35px;
+  background-color: #ffffff;
+  position: absolute;
+  left: 235px;
+  top: 126px;
+  transform: rotate(40deg);
+}
+
+.hand_heart_L {
+  width: 12px;
+  height: 18px;
+  background-color: rgb(224, 23, 23);
+  border-radius: 50%;
+  position: absolute;
+  top: 155px;
+  left: 220px;
+  transform: rotate(-35deg);
+  z-index: 1;
+}
+
+/* 肩膀 */
+
+.shoulder_heart {
+  position: absolute;
+  top: 75px;
+  left: 90px;
+  width: 26px;
+  height: 13px;
+  background-color: rgb(224, 23, 23);
+  border-radius: 0 0 500px 500px;
+}
+
+.shoulder02_heart {
+  position: absolute;
+  top: 75px;
+  left: 180px;
+  width: 26px;
+  height: 13px;
+  background-color: rgb(224, 23, 23);
+  border-radius: 0 0 500px 500px;
+}
+
+/* 黑桃 */
+
+.card_spades {
+  width: 140px;
+  /* height: 180px; */
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  top: 75px;
+  left: 80px;
+}
+
+.card_front_spades {
+  width: 140px;
+  height: 192px;
+  background-image: url(../cards/1S.jpg);
+  background-color: #fff;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.card_back_spades {
+  width: 140px;
+  height: 180px;
+  background-color: #fff;
+  background-image: url(../images/card-back.jpg);
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+
+.head_spades {
+  width: 36px;
+  height: 60px;
+  position: absolute;
+  left: 95%;
+  top: 28px;
+  transform: rotate(180deg);
+}
+
+.head_spades::before {
+  content: '';
+  width: 36px;
+  height: 60px;
+  border-radius: 50px 50px 0 0;
+  background-color: rgb(0, 0, 0);
+  position: absolute;
+  left: 10px;
+  transform: rotate(45deg);
+}
+
+.head_spades::after {
+  content: '';
+  width: 36px;
+  height: 60px;
+  border-radius: 50px 50px 0 0;
+  background-color: rgb(0, 0, 0);
+  position: absolute;
+  left: -7px;
+  transform: rotate(-45deg);
+}
+
+.face_spades {
+  width: 18px;
+  height: 40px;
+  position: absolute;
+  left: 12px;
+  top: 8px;
+  z-index: 1;
+}
+
+.face_spades::before {
+  content: '';
+  width: 21px;
+  height: 35px;
+  border-radius: 50px 50px 0 0;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  left: 2px;
+  top: 2.5px;
+  transform: rotate(45deg);
+}
+
+.face_spades::after {
+  content: '';
+  width: 21px;
+  height: 35px;
+  border-radius: 50px 50px 0 0;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  left: -8px;
+  top: 2.5px;
+  transform: rotate(-45deg);
+}
+
+/* 嘴 */
+.mouth_spades {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  left: 14px;
+  top: 20px;
+  z-index: 2;
+}
+
+.mouth_spades::before {
+  content: '';
+  width: 5px;
+  height: 8px;
+  border-radius: 50px 50px 0 0;
+  background-color: rgb(0, 0, 0);
+  transform: rotate(45deg);
+  position: absolute;
+  left: 3.5px;
+}
+
+.mouth_spades::after {
+  content: '';
+  width: 5px;
+  height: 8px;
+  border-radius: 50px 50px 0 0;
+  background-color: rgb(0, 0, 0);
+  transform: rotate(-45deg);
+  position: absolute;
+  left: 1px;
+}
+
+/* 鼻子 */
+.nose_spades {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  left: 14.7px;
+  top: 34px;
+  z-index: 1;
+}
+
+.nose_spades::before {
+  content: '';
+  width: 9px;
+  height: 13px;
+  border-radius: 50px 50px 0 0;
+  background-color: rgb(250, 136, 221);
+  transform: rotate(45deg);
+  position: absolute;
+  left: 2px;
+}
+
+.nose_spades::after {
+  content: '';
+  width: 9px;
+  height: 13px;
+  border-radius: 50px 50px 0 0;
+  background-color: rgb(250, 136, 221);
+  transform: rotate(-45deg);
+  position: absolute;
+  left: -1px;
+}
+
+/* 手臂 */
+.arm_spades_R {
+  width: 5px;
+  height: 65px;
+  background-color: #fff;
+  position: absolute;
+  left: 80px;
+  top: 76px;
+  transform-origin: top center;
+  transform: rotate(30deg);
+}
+
+.arm2_spades_R {
+  width: 5px;
+  height: 35px;
+  background-color: #fff;
+  position: absolute;
+  left: 59px;
+  top: 126px;
+  transform: rotate(-40deg);
+}
+
+.hand_spades_R {
+  width: 12px;
+  height: 18px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 50%;
+  position: absolute;
+  top: 155px;
+  left: 67px;
+  transform: rotate(35deg);
+  z-index: 1;
+}
+
+.arm_spades_L {
+  width: 5px;
+  height: 65px;
+  background-color: #ffffff;
+  position: absolute;
+  left: 214px;
+  top: 76px;
+  transform-origin: top center;
+  transform: rotate(-30deg);
+  z-index: 1;
+}
+
+.arm2_spades_L {
+  width: 5px;
+  height: 35px;
+  background-color: #ffffff;
+  position: absolute;
+  left: 235px;
+  top: 126px;
+  transform: rotate(40deg);
+}
+
+.hand_spades_L {
+  width: 12px;
+  height: 18px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 50%;
+  position: absolute;
+  top: 155px;
+  left: 220px;
+  transform: rotate(-35deg);
+  z-index: 1;
+}
+
+.shoulder_spades {
+  position: absolute;
+  top: 75px;
+  left: 90px;
+  width: 26px;
+  height: 13px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 0 0 500px 500px;
+}
+
+.shoulder02_spades {
+  position: absolute;
+  top: 75px;
+  left: 180px;
+  width: 26px;
+  height: 13px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 0 0 500px 500px;
+}
